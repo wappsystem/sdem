@@ -1,0 +1,355 @@
+<div id=D__ID>
+    <!--third html start -->
+    <div class="container mt-95 mb-3">
+        <div class="row">
+            <!-- form container start -->
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12 mx-auto formbox">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- form start -->
+                        <form id="F__ID" class="AffectiveSlider" >
+                            <h3 id=title__ID></h3>
+                            <!-- participant part for all tsak forms -------------------->
+                            <div id="participant_div__ID"  style='display:none'>
+                                <div class="form-group" style='text-align: left;'>
+                                    <fieldset class="subquestions" >
+                                        <label  ><span class="">Participant</span>
+                                            <input type=text name="Participant" class=form-control id=Participant__ID
+                                                data-id="Participant" />
+                                        </label>
+                                        <label><span class="">Participant ID</span>
+                                            <input type=text name="Participant_uid" class=form-control readonly />
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+							<div id=start_page__ID><h6>
+								For approximately the next 15 minutes, you will be looking at pictures projected on
+								the screen in front of you, and you will be rating each picture in terms of how it
+								made you feel while viewing it. There are no right or wrong answers, so simply
+								respond as honestly as you can. These images are designed to elicit an emotional
+								response, if you feel distressed at any point and would like to discontinue please let
+								the researcher know.</h6><br>
+								<button type=button id=start__ID class='btn btn-secondary'>Start</button>
+							</div>
+							<div id=images__ID style='display:none' >
+								<img id=img__ID width=1024 height=768 >
+							</div>
+							<div id=AS__ID>
+							<div id='AffectiveSlider__ID'>
+                            </div>
+						</div>
+                            <!-- form group -->
+                            <button type="button" id="next__ID" class="btn btn-primary btn-lg">Next</button>
+                            <button type="submit" id="submit__ID" class="btn btn-primary btn-lg">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function F__ID(){
+            //-------------------------------------
+            VmInclude:'__COMPONENT__/f/form.01.js'
+            VmInclude:__CURRENT_PATH__/shared-form.js
+            //-------------------------------------
+			var II=-1;
+			var aff_slider,arousal_part,leasure_part,top_part;
+			var out_array_id=[];
+			var out_array_a=[];
+			var out_array_p=[];
+			var load2=m.load;
+			m.load=function(){
+				load2();
+				$('#AS__ID').hide();
+				II=-1;
+				console.log("B: "+II)
+				$('#next__ID').hide();
+				$('#submit__ID').hide();
+            }
+			var img_array=[
+				{src:'__CURRENT_PATH__/../../lstim/1440.jpg',time:2000,id_num:"1440"},
+				{src:'__CURRENT_PATH__/../../lstim/1590.jpg',time:2000,id_num:"1590"},
+				{src:'__CURRENT_PATH__/../../lstim/1720.jpg',time:2000,id_num:"1720"},
+				{src:'__CURRENT_PATH__/../../lstim/1721.jpg',time:2000,id_num:"1721"}
+			]
+		//----------------------------------
+        var random_array=function(array){
+            var currentIndex=array.length, temporaryValue, randomIndex;
+            while (0 !== currentIndex) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+			console.log("C: "+II)
+            return array;
+        }
+        //----------------------------------
+        var group1=[0,1,2,3];
+        var group1_random=random_array(group1);
+        //----------------------------------
+        var all=[];
+        for(i=0;i<4;i++){
+          all.push(0+group1[i])
+        }
+        console.dir(all)
+		//----------------------------------
+        var N=img_array.length;
+        $('#start__ID').on('click',function(){
+			$('#start_page__ID').hide();
+			console.log("C: "+II)
+            if(II<0){
+                II=0;
+                set_img();
+            }
+            else{
+                II=0
+            }
+        })
+		//--------------------------------------
+        var set_img=function(){
+			console.log("A: "+II)
+			$('#images__ID').show();
+            if(II>=0 && II<=3){
+				var r_I=all[II];
+				console.log(II+'---'+r_I);
+				$("#img__ID").attr("src",img_array[r_I].src);
+				setTimeout(get_response, img_array[r_I].time);
+            }
+			console.log("D: "+II) 
+        }
+		//--------------------------------------
+		var get_response=function(){
+			console.log("E: "+II) 
+			$('#images__ID').hide();
+			var r_I=all[II];
+			aff_slider = document.getElementById('AffectiveSlider__ID');
+			top_part="Please rate the picture using <b>BOTH the sliders</b> (their order of apperance will change randomly). <b>Don't think too much</b> about it, just <b>rate how you feel</b> when watching it."; 
+            arousal_part = '<hr>Move the slider to rate your level of arousal \n<div class="arousal"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_sleepy.svg"></object> \n<input type="range" name="a_'+img_array[r_I].id_num+'" id="AS-arousal" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_wideawake.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object></div>';
+            pleasure_part = '<hr>Move the slider to rate your level of pleasure \n<div class="pleasure"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_unhappy.svg"></object> \n<input type="range" name="p_'+img_array[r_I].id_num+'" id="AS-pleasure" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_happy.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object> \n</div>';
+            if (Math.random() > 0.5) {
+                    aff_slider.innerHTML = top_part+arousal_part+pleasure_part;
+			}
+			else {
+				aff_slider.innerHTML = top_part+pleasure_part+arousal_part;
+			}
+			II++;
+			$('#next__ID').show();
+			$('#AS__ID').show();
+		}
+		//--------------------------------------
+		$('#next__ID').on('click',function(){
+			console.log("F: "+II)
+			$('#next__ID').hide();
+			var r_I=all[II-1];
+			var arousal= $("#D__ID input[name='a_"+img_array[r_I].id_num+"']").val()
+			var pleasure= $("#D__ID input[name='p_"+img_array[r_I].id_num+"']").val()
+			console.log('name: '+$("#D__ID input[name='a_"+img_array[r_I].id_num+"']").val())
+			out_array_id.push(img_array[r_I].id_num);
+			out_array_a.push(arousal);
+			out_array_p.push(pleasure);
+			console.log(JSON.stringify(out_array_id))
+			console.log(out_array_id.length)
+
+			if(II==3) {
+				//$('#submit__ID').show();
+				$('#next__ID').hide();
+			}
+
+            if(II==4){
+				$('#submit__ID').click();
+			}
+            else{
+				
+/*				var data_new={}
+				var a=$('#F__ID').serializeArray();
+			    $.each(a, function () { data_new[this.name]=this.value || '';});
+				var aa='a_'+(img_array[r_I].id_num).toString()
+				*/
+				$('#AS__ID').hide();
+                set_img();
+            }
+        })
+		//--------------------------------------
+		m.before_submit=function(data,index){
+			console.log(JSON.stringify(out_array_id))
+			data.id_1440_a=out_array_a[out_array_id.indexOf("1440")]
+			data.id_1440_p=out_array_p[out_array_id.indexOf("1440")]
+			data.id_1590_a=out_array_a[out_array_id.indexOf("1590")]
+			data.id_1590_p=out_array_p[out_array_id.indexOf("1590")]
+			data.id_1720_a=out_array_a[out_array_id.indexOf("1720")]
+			data.id_1720_p=out_array_p[out_array_id.indexOf("1720")]
+			data.id_1721_a=out_array_a[out_array_id.indexOf("1721")]
+			data.id_1721_p=out_array_p[out_array_id.indexOf("1721")]
+
+			return true; 
+		}
+
+    }
+
+    </script>
+    <style>
+                #D__ID .mt-95 {
+    }
+
+#D__ID #img__ID{
+	height:70%;
+	width:70%;
+}
+#D__ID .AffectiveSlider {
+	width: 100%;
+	text-align: center;
+}
+
+#D__ID .arousal_svg {
+	width: 7%;
+	margin: 0px;
+	margin-bottom: -30px;
+}
+
+#D__ID .AffectiveSlider {
+	/*margin-top: 2em;*/
+}
+
+#D__ID .AffectiveSlider .intensity_cue_svg {
+	width: 78%;
+	position: relative;
+	top: -14px;
+}
+
+@media (max-width: 1100px) {
+	#D__ID .AffectiveSlider .intensity_cue_svg {
+		width: 76%;
+		position: relative;
+		top: 5px;
+	}
+}
+
+#D__ID input[type=range]:focus {
+	outline: none;
+}
+
+#D__ID .AffectiveSlider input[type=range]{
+	/* fix for FF unable to apply focus style bug  */
+	border: 10px solid white;
+
+	/*required for proper track sizing in FF*/
+	width: 80%;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: top;
+	margin-top: 6px;
+}
+
+
+#D__ID .AffectiveSlider input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 20px;
+	background: #ddd;
+	border-radius: 10px;
+	border: none;
+}
+#D__ID input[type=range]:focus::-moz-range-track {
+	background: #ccc;
+}
+
+#D__ID .AffectiveSlider input[type=range]::-moz-range-thumb {
+	height: 35px;
+	width: 35px;
+	border-radius: 60%;
+	background: white;
+	border: 2px solid #505050;
+}
+
+#D__ID .AffectiveSlider input[type=range]::-moz-range-thumb:hover {
+	background: #505050;
+	border: 2px solid white;
+	cursor: pointer;
+	box-shadow: 0px 0px 12px #212121;
+}
+
+
+#D__ID .AffectiveSlider input[type=range]{
+	-webkit-appearance: none;
+}
+
+
+#D__ID input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 20px;
+	border: none;
+	background: #ddd;
+	border-radius: 10px;
+}
+
+#D__ID input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 35px;
+	width: 35px;
+	border-radius: 60%;
+	background: white;
+	border: 2px solid #505050;
+	margin-top: -8px;
+}
+
+#D__ID input[type=range]::-webkit-slider-thumb:hover {
+	background: #505050;
+	border: 2px solid white;
+	cursor: pointer;
+	box-shadow: 0px 0px 12px #212121;
+}
+
+
+#D__ID input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #ccc;
+}
+
+#D__ID input[type=range]::-ms-track {
+	width: 100%;
+	height: 20px;
+	/*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+	background: transparent;
+	/*leave room for the larger thumb to overflow with a transparent border */
+	border-color: transparent;
+	border-width: 16px 0;
+	/*remove default tick marks*/
+	color: transparent;
+}
+#D__ID input[type=range]::-ms-fill-lower {
+	background: #ddd;
+	border-radius: 10px;
+}
+#D__ID input[type=range]::-ms-fill-upper {
+	background: #ddd;
+	border-radius: 10px;
+}
+#D__ID input[type=range]::-ms-thumb {
+	height: 35px;
+	width: 35px;
+	border-radius: 60%;
+	background: white;
+	border: 2px solid #505050;
+}
+#D__ID .AffectiveSlider input[type=range]::-ms-thumb:hover {
+	background: #505050;
+	border: 2px solid white;
+	cursor: pointer;
+	box-shadow: 0px 0px 12px #212121;
+}
+#D__ID input[type=range]:focus::-ms-fill-lower {
+	background: #ccc;
+}
+#D__ID input[type=range]:focus::-ms-fill-upper {
+	background: #ccc;
+}
+
+div {
+	margin-bottom: 2em;
+}
+        VmInclude:__CURRENT_PATH__/../../library/wappsystem-form.css
+
+</style>
+</div>
