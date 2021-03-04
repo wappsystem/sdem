@@ -1,4 +1,4 @@
-<div id=D__ID>
+<div id=DI__ID>
     <!--third html start -->
     <div class="container mt-95 mb-3">
         <div class="row">
@@ -8,7 +8,7 @@
                     <div class="col-12">
                         <!-- form start -->
                         <form id="F__ID" class="AffectiveSlider" >
-                            <h3 id=title__ID></h3>
+                            <h3 id=title__ID></h3><br>
                             <!-- participant part for all tsak forms -------------------->
                             <div id="participant_div__ID"  style='display:none'>
                                 <div class="form-group" style='text-align: left;'>
@@ -30,11 +30,11 @@
 								respond as honestly as you can. These images are designed to elicit an emotional
 								response, if you feel distressed at any point and would like to discontinue please let
 								the researcher know.</h6><br>
-								<button type=button id=start__ID class='btn btn-secondary'>Start</button>
+								<button type=button id=start__ID class='btn btn-secondary'>Start</button><br>
 							</div>
 							<div id=images__ID style='display:none' >
 								<img id=img__ID width=1024 height=768 >
-							</div>
+							</div><br>
 							<div id=AS__ID>
 							<div id='AffectiveSlider__ID'>
                             </div>
@@ -61,6 +61,7 @@
 			var out_array_p=[];
 			var load2=m.load;
 			m.load=function(){
+				
 				load2();
 				$("#start_page__ID").show();
 				$('#AS__ID').hide();
@@ -100,6 +101,7 @@
 		//----------------------------------
         var N=img_array.length;
         $('#start__ID').on('click',function(){
+			$('#title__ID').hide();
 			$('#start_page__ID').hide();
 			console.log("C: "+II)
             if(II<0){
@@ -146,9 +148,9 @@
 			console.log("F: "+II)
 			$('#next__ID').hide();
 			var r_I=all[II-1];
-			var arousal= $("#D__ID input[name='a_"+img_array[r_I].id_num+"']").val()
-			var pleasure= $("#D__ID input[name='p_"+img_array[r_I].id_num+"']").val()
-			console.log('name: '+$("#D__ID input[name='a_"+img_array[r_I].id_num+"']").val())
+			var arousal= $("#DI__ID input[name='a_"+img_array[r_I].id_num+"']").val()
+			var pleasure= $("#DI__ID input[name='p_"+img_array[r_I].id_num+"']").val()
+			console.log('name: '+$("#DI__ID input[name='a_"+img_array[r_I].id_num+"']").val())
 			out_array_id.push(img_array[r_I].id_num);
 			out_array_a.push(arousal);
 			out_array_p.push(pleasure);
@@ -185,55 +187,53 @@
 			data.id_1720_p=out_array_p[out_array_id.indexOf("1720")]
 			data.id_1721_a=out_array_a[out_array_id.indexOf("1721")]
 			data.id_1721_p=out_array_p[out_array_id.indexOf("1721")]
-
 			return true; 
 		}
 
     }
-
     </script>
     <style>
-                #D__ID .mt-95 {
+                #DI__ID .mt-95 {
     }
 
-#D__ID #img__ID{
+#DI__ID #img__ID{
 	height:70%;
 	width:70%;
 }
-#D__ID .AffectiveSlider {
+#DI__ID .AffectiveSlider {
 	width: 100%;
 	text-align: center;
 }
 
-#D__ID .arousal_svg {
+#DI__ID .arousal_svg {
 	width: 7%;
 	margin: 0px;
 	margin-bottom: -30px;
 }
 
-#D__ID .AffectiveSlider {
+#DI__ID .AffectiveSlider {
 	/*margin-top: 2em;*/
 }
 
-#D__ID .AffectiveSlider .intensity_cue_svg {
+#DI__ID .AffectiveSlider .intensity_cue_svg {
 	width: 78%;
 	position: relative;
 	top: -14px;
 }
 
 @media (max-width: 1100px) {
-	#D__ID .AffectiveSlider .intensity_cue_svg {
+	#DI__ID .AffectiveSlider .intensity_cue_svg {
 		width: 76%;
 		position: relative;
 		top: 5px;
 	}
 }
 
-#D__ID input[type=range]:focus {
+#DI__ID input[type=range]:focus {
 	outline: none;
 }
 
-#D__ID .AffectiveSlider input[type=range]{
+#DI__ID .AffectiveSlider input[type=range]{
 	/* fix for FF unable to apply focus style bug  */
 	border: 10px solid white;
 
@@ -246,18 +246,18 @@
 }
 
 
-#D__ID .AffectiveSlider input[type=range]::-moz-range-track {
+#DI__ID .AffectiveSlider input[type=range]::-moz-range-track {
 	width: 100%;
 	height: 20px;
 	background: #ddd;
 	border-radius: 10px;
 	border: none;
 }
-#D__ID input[type=range]:focus::-moz-range-track {
+#DI__ID input[type=range]:focus::-moz-range-track {
 	background: #ccc;
 }
 
-#D__ID .AffectiveSlider input[type=range]::-moz-range-thumb {
+#DI__ID .AffectiveSlider input[type=range]::-moz-range-thumb {
 	height: 35px;
 	width: 35px;
 	border-radius: 60%;
@@ -265,7 +265,7 @@
 	border: 2px solid #505050;
 }
 
-#D__ID .AffectiveSlider input[type=range]::-moz-range-thumb:hover {
+#DI__ID .AffectiveSlider input[type=range]::-moz-range-thumb:hover {
 	background: #505050;
 	border: 2px solid white;
 	cursor: pointer;
@@ -273,12 +273,12 @@
 }
 
 
-#D__ID .AffectiveSlider input[type=range]{
+#DI__ID .AffectiveSlider input[type=range]{
 	-webkit-appearance: none;
 }
 
 
-#D__ID input[type=range]::-webkit-slider-runnable-track {
+#DI__ID input[type=range]::-webkit-slider-runnable-track {
 	width: 100%;
 	height: 20px;
 	border: none;
@@ -286,7 +286,7 @@
 	border-radius: 10px;
 }
 
-#D__ID input[type=range]::-webkit-slider-thumb {
+#DI__ID input[type=range]::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	height: 35px;
 	width: 35px;
@@ -296,7 +296,7 @@
 	margin-top: -8px;
 }
 
-#D__ID input[type=range]::-webkit-slider-thumb:hover {
+#DI__ID input[type=range]::-webkit-slider-thumb:hover {
 	background: #505050;
 	border: 2px solid white;
 	cursor: pointer;
@@ -304,11 +304,11 @@
 }
 
 
-#D__ID input[type=range]:focus::-webkit-slider-runnable-track {
+#DI__ID input[type=range]:focus::-webkit-slider-runnable-track {
 	background: #ccc;
 }
 
-#D__ID input[type=range]::-ms-track {
+#DI__ID input[type=range]::-ms-track {
 	width: 100%;
 	height: 20px;
 	/*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
@@ -319,37 +319,34 @@
 	/*remove default tick marks*/
 	color: transparent;
 }
-#D__ID input[type=range]::-ms-fill-lower {
+#DI__ID input[type=range]::-ms-fill-lower {
 	background: #ddd;
 	border-radius: 10px;
 }
-#D__ID input[type=range]::-ms-fill-upper {
+#DI__ID input[type=range]::-ms-fill-upper {
 	background: #ddd;
 	border-radius: 10px;
 }
-#D__ID input[type=range]::-ms-thumb {
+#DI__ID input[type=range]::-ms-thumb {
 	height: 35px;
 	width: 35px;
 	border-radius: 60%;
 	background: white;
 	border: 2px solid #505050;
 }
-#D__ID .AffectiveSlider input[type=range]::-ms-thumb:hover {
+#DI__ID .AffectiveSlider input[type=range]::-ms-thumb:hover {
 	background: #505050;
 	border: 2px solid white;
 	cursor: pointer;
 	box-shadow: 0px 0px 12px #212121;
 }
-#D__ID input[type=range]:focus::-ms-fill-lower {
+#DI__ID input[type=range]:focus::-ms-fill-lower {
 	background: #ccc;
 }
-#D__ID input[type=range]:focus::-ms-fill-upper {
+#DI__ID input[type=range]:focus::-ms-fill-upper {
 	background: #ccc;
 }
 
-div {
-	margin-bottom: 2em;
-}
         VmInclude:__CURRENT_PATH__/../../library/wappsystem-form.css
 
 </style>
