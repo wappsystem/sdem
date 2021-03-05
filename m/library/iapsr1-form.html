@@ -23,30 +23,13 @@
                                     </fieldset>
                                 </div>
                             </div>
-							<div id=introduction__ID>
-								<div id=introduction_1__ID><h6>
-									For approximately the next 15 minutes, you will be looking at pictures projected on
-									the screen in front of you, and you will be rating each picture in terms of how it
-									made you feel while viewing it. There are no right or wrong answers, so simply
-									respond as honestly as you can. These images are designed to elicit an emotional
-									response, if you feel distressed at any point and would like to discontinue please let
-									the researcher know. <br><br> Any questions?</h6><br>
-								</div>
-								<div id=introduction_2__ID><h6>
-									You will view each picture for 2 seconds and then will have to rate the picture viewed on two scales; happy versus unhappy and calm versus excited.</h6><br>
-									<img src="images/slider.png" class="responsive" > 
-								</div>
-								<div id=introduction_3__ID><h6>
-									First we will start with an example:</h6><br>
-									<img src="https://source.unsplash.com/FtZL0r4DZYk/900x600"  class=responsive2> 
-								</div>
-								<div id=introduction_4__ID>
-								</div>
-								<br>
-								<button type=button id=intro__ID class='btn btn-secondary'>continue..</button><br>
-							</div>
 							<div id=start_page__ID><h6>
-								When you are ready to begin press Start</h6><br>
+								For approximately the next 15 minutes, you will be looking at pictures projected on
+								the screen in front of you, and you will be rating each picture in terms of how it
+								made you feel while viewing it. There are no right or wrong answers, so simply
+								respond as honestly as you can. These images are designed to elicit an emotional
+								response, if you feel distressed at any point and would like to discontinue please let
+								the researcher know.</h6><br>
 								<button type=button id=start__ID class='btn btn-secondary'>Start</button><br>
 							</div>
 							<div id=images__ID style='display:none' >
@@ -71,7 +54,7 @@
             VmInclude:'__COMPONENT__/f/form.01.js'
             VmInclude:__CURRENT_PATH__/shared-form.js
             //-------------------------------------
-			var image_number=4;
+			var image_number=60;
 			var II=0;
 			var aff_slider,arousal_part,leasure_part,top_part;
 			var out_array_id=[];
@@ -79,7 +62,7 @@
 			var out_array_p=[];
 			var out_array_time=[];
 			var load2=m.load;
-			var intro_page=1;
+			var required_click=0;
 			var img_array=[
 				{src:'__CURRENT_PATH__/../../lstim/1440.jpg',time:2000,id_num:'1440'},
 				{src:'__CURRENT_PATH__/../../lstim/1590.jpg',time:2000,id_num:'1590'},
@@ -149,40 +132,11 @@
                 $("body").addClass('body_background_white');
 				$("#header").css("display","none");
 				$("#footer").css("display","none");
-				$("#start_page__ID").hide();
+				$("#start_page__ID").show();
 				$('#AS__ID').hide();
 				$('#next__ID').hide();
 				$('#submit__ID').hide();
-				$('#introduction_1__ID').show()
-				$('#introduction__ID').show()
-				$('#introduction_2__ID').hide()
-				$('#introduction_3__ID').hide()
-				$('#introduction_4__ID').hide()
             }
-		//----------------------------------
-		$('#intro__ID').on('click',function(){
-			$('#participant_div__ID').hide();
-			$('#title__ID').hide();
-			$('#introduction_'+intro_page+'__ID').hide();
-			intro_page++;
-			if(intro_page==5){
-				$('#introduction__ID').hide();
-				$('#start_page__ID').show();
-			}
-			else{
-				$('#introduction_'+intro_page+'__ID').show();
-			}
-
-
-
-			aff_slider = document.getElementById('introduction_4__ID');
-			top_part="Please rate your feelings of the previous picture on the scale below<br><br>Please rate the picture using <b>BOTH the sliders</b> (their order of apperance will change randomly). <b>Don't think too much</b> about it, just <b>rate how you feel</b> when watching it."; 
-            arousal_part = '<hr>Move the slider to rate your level of arousal \n<div class="arousal"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_sleepy.svg"></object> \n<input type="range" name="a_111" id="arousal_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_wideawake.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object></div>';
-            pleasure_part = '<hr>Move the slider to rate your level of pleasure \n<div class="pleasure"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_unhappy.svg"></object> \n<input type="range" name="p_111" id="pleasure_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_happy.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object> \n</div>';
-            aff_slider.innerHTML = top_part+arousal_part+pleasure_part;
-
-        })
-
 		//----------------------------------
         var random_array=function(array){
             var currentIndex=array.length, temporaryValue, randomIndex;
@@ -342,14 +296,6 @@
     }
     </script>
     <style>
-#DI__ID .responsive{
-	width:100%;
-	height:auto;
-}		
-#DI__ID .responsive2{
-	width:80%;
-	height:auto;
-}		
 #DI__ID .mt-95 {
     }
 
