@@ -23,22 +23,45 @@
                                     </fieldset>
                                 </div>
                             </div>
+							<div id=introduction__ID>
+								<div id=introduction_1__ID><h6>
+									For approximately the next 15 minutes, you will be looking at pictures projected on
+									the screen in front of you, and you will be rating each picture in terms of how it
+									made you feel while viewing it. There are no right or wrong answers, so simply
+									respond as honestly as you can. These images are designed to elicit an emotional
+									response, if you feel distressed at any point and would like to discontinue please let
+									the researcher know. <br><br> Any questions?</h6><br>
+								</div>
+								<div id=introduction_2__ID><h6>
+									You will view each picture for 2 seconds and then will have to rate the picture viewed on two scales; happy versus unhappy and calm versus excited.</h6><br>
+									<img src="images/slider.png" class="responsive" > 
+								</div>
+								<div id=introduction_3__ID><h6>
+									First we will start with an example:</h6><br>
+									<img src="https://source.unsplash.com/FtZL0r4DZYk/900x600"  class=responsive2> 
+								</div>
+								<div id=introduction_4__ID>
+								</div>
+								<br>
+								<button type=button id=intro__ID class='btn btn-secondary'>continue..</button><br>
+							</div>
 							<div id=start_page__ID><h6>
-								For approximately the next 15 minutes, you will be looking at pictures projected on
-								the screen in front of you, and you will be rating each picture in terms of how it
-								made you feel while viewing it. There are no right or wrong answers, so simply
-								respond as honestly as you can. These images are designed to elicit an emotional
-								response, if you feel distressed at any point and would like to discontinue please let
-								the researcher know.</h6><br>
+								When you are ready to begin press Start</h6><br>
 								<button type=button id=start__ID class='btn btn-secondary'>Start</button><br>
 							</div>
 							<div id=images__ID style='display:none' >
-								<img id=img__ID width=1024 height=768 >
-							</div><br>
+								<div>
+									<img id=img__ID width=1024 height=768 style='float:right' >
+									<h6>Have you seen this image before?</h6>
+									<button type="button" id="know__ID" class="btn btn-recog">&nbsp;&nbsp;&nbsp;&nbsp;Know&nbsp;&nbsp;&nbsp;&nbsp;</button><br>
+									<button type="button" id="remember__ID" class="btn btn-recog">Remember</button><br>
+									<button type="button" id="no__ID" class="btn btn-recog">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+								</div>
+							</div>
 							<div id=AS__ID>
-							<div id='AffectiveSlider__ID'>
-                            </div>
-						</div>
+								<div id='AffectiveSlider__ID'>
+								</div>
+							</div>
                             <!-- form group -->
                             <button type="button" id="next__ID" class="btn btn-primary btn-lg">Next</button>
                             <button type="submit" id="submit__ID" class="btn btn-primary btn-lg">Submit</button>
@@ -54,76 +77,108 @@
             VmInclude:'__COMPONENT__/f/form.01.js'
             VmInclude:__CURRENT_PATH__/shared-form.js
             //-------------------------------------
-			var image_number=60;
+			var image_number=4;
 			var II=0;
 			var aff_slider,arousal_part,leasure_part,top_part;
 			var out_array_id=[];
 			var out_array_a=[];
 			var out_array_p=[];
 			var out_array_time=[];
+			var out_array_rec=[];
+			var out_array_result=[];
 			var load2=m.load;
-			var required_click=0;
+			var intro_page=1;
 			var img_array=[
-				{src:'__CURRENT_PATH__/../../lstim/1440.jpg',time:2000,id_num:'1440'},
-				{src:'__CURRENT_PATH__/../../lstim/1590.jpg',time:2000,id_num:'1590'},
-				{src:'__CURRENT_PATH__/../../lstim/1720.jpg',time:2000,id_num:'1720'},
-				{src:'__CURRENT_PATH__/../../lstim/1721.jpg',time:2000,id_num:'1721'},
-				{src:'__CURRENT_PATH__/../../lstim/1750.jpg',time:2000,id_num:'1750'},
-				{src:'__CURRENT_PATH__/../../lstim/1810.jpg',time:2000,id_num:'1810'},
-				{src:'__CURRENT_PATH__/../../lstim/1920.jpg',time:2000,id_num:'1920'},
-				{src:'__CURRENT_PATH__/../../lstim/2040.jpg',time:2000,id_num:'2040'},
-				{src:'__CURRENT_PATH__/../../lstim/2050.jpg',time:2000,id_num:'2050'},
-				{src:'__CURRENT_PATH__/../../lstim/2053.jpg',time:2000,id_num:'2053'},
-				{src:'__CURRENT_PATH__/../../lstim/2057.jpg',time:2000,id_num:'2057'},
-				{src:'__CURRENT_PATH__/../../lstim/2091.jpg',time:2000,id_num:'2091'},
-				{src:'__CURRENT_PATH__/../../lstim/2170.jpg',time:2000,id_num:'2170'},
-				{src:'__CURRENT_PATH__/../../lstim/2190.jpg',time:2000,id_num:'2190'},
-				{src:'__CURRENT_PATH__/../../lstim/2205.jpg',time:2000,id_num:'2205'},
-				{src:'__CURRENT_PATH__/../../lstim/2276.jpg',time:2000,id_num:'2276'},
-				{src:'__CURRENT_PATH__/../../lstim/2360.jpg',time:2000,id_num:'2360'},
-				{src:'__CURRENT_PATH__/../../lstim/2381.jpg',time:2000,id_num:'2381'},
-				{src:'__CURRENT_PATH__/../../lstim/2495.jpg',time:2000,id_num:'2495'},
-				{src:'__CURRENT_PATH__/../../lstim/2510.jpg',time:2000,id_num:'2510'},
-				{src:'__CURRENT_PATH__/../../lstim/2516.jpg',time:2000,id_num:'2516'},
-				{src:'__CURRENT_PATH__/../../lstim/2650.jpg',time:2000,id_num:'2650'},
-				{src:'__CURRENT_PATH__/../../lstim/2750.jpg',time:2000,id_num:'2750'},
-				{src:'__CURRENT_PATH__/../../lstim/2800.jpg',time:2000,id_num:'2800'},
-				{src:'__CURRENT_PATH__/../../lstim/2840.jpg',time:2000,id_num:'2840'},
-				{src:'__CURRENT_PATH__/../../lstim/2850.jpg',time:2000,id_num:'2850'},
-				{src:'__CURRENT_PATH__/../../lstim/2880.jpg',time:2000,id_num:'2880'},
-				{src:'__CURRENT_PATH__/../../lstim/2890.jpg',time:2000,id_num:'2890'},
-				{src:'__CURRENT_PATH__/../../lstim/2900.jpg',time:2000,id_num:'2900'},
-				{src:'__CURRENT_PATH__/../../lstim/3220.jpg',time:2000,id_num:'3220'},
-				{src:'__CURRENT_PATH__/../../lstim/3230.jpg',time:2000,id_num:'3230'},
-				{src:'__CURRENT_PATH__/../../lstim/3300.jpg',time:2000,id_num:'3300'},
-				{src:'__CURRENT_PATH__/../../lstim/3350.jpg',time:2000,id_num:'3350'},
-				{src:'__CURRENT_PATH__/../../lstim/4610.jpg',time:2000,id_num:'4610'},
-				{src:'__CURRENT_PATH__/../../lstim/4626.jpg',time:2000,id_num:'4626'},
-				{src:'__CURRENT_PATH__/../../lstim/5470.jpg',time:2000,id_num:'5470'},
-				{src:'__CURRENT_PATH__/../../lstim/5510.jpg',time:2000,id_num:'5510'},
-				{src:'__CURRENT_PATH__/../../lstim/5910.jpg',time:2000,id_num:'5910'},
-				{src:'__CURRENT_PATH__/../../lstim/6212.jpg',time:2000,id_num:'6212'},
-				{src:'__CURRENT_PATH__/../../lstim/6570.jpg',time:2000,id_num:'6570'},
-				{src:'__CURRENT_PATH__/../../lstim/7004.jpg',time:2000,id_num:'7004'},
-				{src:'__CURRENT_PATH__/../../lstim/7010.jpg',time:2000,id_num:'7010'},
-				{src:'__CURRENT_PATH__/../../lstim/7020.jpg',time:2000,id_num:'7020'},
-				{src:'__CURRENT_PATH__/../../lstim/7050.jpg',time:2000,id_num:'7050'},
-				{src:'__CURRENT_PATH__/../../lstim/7100.jpg',time:2000,id_num:'7100'},
-				{src:'__CURRENT_PATH__/../../lstim/7175.jpg',time:2000,id_num:'7175'},
-				{src:'__CURRENT_PATH__/../../lstim/7185.jpg',time:2000,id_num:'7185'},
-				{src:'__CURRENT_PATH__/../../lstim/7217.jpg',time:2000,id_num:'7217'},
-				{src:'__CURRENT_PATH__/../../lstim/7233.jpg',time:2000,id_num:'7233'},
-				{src:'__CURRENT_PATH__/../../lstim/7235.jpg',time:2000,id_num:'7235'},
-				{src:'__CURRENT_PATH__/../../lstim/7491.jpg',time:2000,id_num:'7491'},
-				{src:'__CURRENT_PATH__/../../lstim/8090.jpg',time:2000,id_num:'8090'},
-				{src:'__CURRENT_PATH__/../../lstim/9000.jpg',time:2000,id_num:'9000'},
-				{src:'__CURRENT_PATH__/../../lstim/9006.jpg',time:2000,id_num:'9006'},
-				{src:'__CURRENT_PATH__/../../lstim/9050.jpg',time:2000,id_num:'9050'},
-				{src:'__CURRENT_PATH__/../../lstim/9180.jpg',time:2000,id_num:'9180'},
-				{src:'__CURRENT_PATH__/../../lstim/9421.jpg',time:2000,id_num:'9421'},
-				{src:'__CURRENT_PATH__/../../lstim/9560.jpg',time:2000,id_num:'9560'},
-				{src:'__CURRENT_PATH__/../../lstim/9561.jpg',time:2000,id_num:'9561'},
-				{src:'__CURRENT_PATH__/../../lstim/9910.jpg',time:2000,id_num:'9910'}				
+				{src:'__CURRENT_PATH__/lstim/1440.jpg',time:2000,id_num:'1440',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/1590.jpg',time:2000,id_num:'1590',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/1720.jpg',time:2000,id_num:'1720',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/1721.jpg',time:2000,id_num:'1721',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/1750.jpg',time:2000,id_num:'1750',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/1810.jpg',time:2000,id_num:'1810',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/1920.jpg',time:2000,id_num:'1920',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2040.jpg',time:2000,id_num:'2040',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2050.jpg',time:2000,id_num:'2050',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2053.jpg',time:2000,id_num:'2053',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2057.jpg',time:2000,id_num:'2057',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2091.jpg',time:2000,id_num:'2091',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2170.jpg',time:2000,id_num:'2170',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2190.jpg',time:2000,id_num:'2190',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2205.jpg',time:2000,id_num:'2205',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2276.jpg',time:2000,id_num:'2276',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2360.jpg',time:2000,id_num:'2360',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2381.jpg',time:2000,id_num:'2381',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2495.jpg',time:2000,id_num:'2495',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2510.jpg',time:2000,id_num:'2510',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2516.jpg',time:2000,id_num:'2516',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2650.jpg',time:2000,id_num:'2650',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2750.jpg',time:2000,id_num:'2750',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2800.jpg',time:2000,id_num:'2800',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2840.jpg',time:2000,id_num:'2840',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2850.jpg',time:2000,id_num:'2850',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2880.jpg',time:2000,id_num:'2880',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2890.jpg',time:2000,id_num:'2890',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/2900.jpg',time:2000,id_num:'2900',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/3220.jpg',time:2000,id_num:'3220',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/3230.jpg',time:2000,id_num:'3230',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/3300.jpg',time:2000,id_num:'3300',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/3350.jpg',time:2000,id_num:'3350',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/4610.jpg',time:2000,id_num:'4610',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/4626.jpg',time:2000,id_num:'4626',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/5470.jpg',time:2000,id_num:'5470',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/5510.jpg',time:2000,id_num:'5510',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/5910.jpg',time:2000,id_num:'5910',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/6212.jpg',time:2000,id_num:'6212',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/6570.jpg',time:2000,id_num:'6570',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7004.jpg',time:2000,id_num:'7004',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7010.jpg',time:2000,id_num:'7010',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7020.jpg',time:2000,id_num:'7020',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7050.jpg',time:2000,id_num:'7050',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7100.jpg',time:2000,id_num:'7100',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7175.jpg',time:2000,id_num:'7175',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7185.jpg',time:2000,id_num:'7185',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7217.jpg',time:2000,id_num:'7217',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7233.jpg',time:2000,id_num:'7233',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7235.jpg',time:2000,id_num:'7235',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/7491.jpg',time:2000,id_num:'7491',val:'Neut',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/8090.jpg',time:2000,id_num:'8090',val:'Pos',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9000.jpg',time:2000,id_num:'9000',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9006.jpg',time:2000,id_num:'9006',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9050.jpg',time:2000,id_num:'9050',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9180.jpg',time:2000,id_num:'9180',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9421.jpg',time:2000,id_num:'9421',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9560.jpg',time:2000,id_num:'9560',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9561.jpg',time:2000,id_num:'9561',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/lstim/9910.jpg',time:2000,id_num:'9910',val:'Neg',og:'TRUE'},
+				{src:'__CURRENT_PATH__/rlist1/1600.jpg',time:2000,id_num:'1600',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2038.jpg',time:2000,id_num:'2038',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2141.jpg',time:2000,id_num:'2141',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2165.jpg',time:2000,id_num:'2165',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2224.jpg',time:2000,id_num:'2224',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2280.jpg',time:2000,id_num:'2280',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2396.jpg',time:2000,id_num:'2396',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2397.jpg',time:2000,id_num:'2397',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2485.jpg',time:2000,id_num:'2485',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2500.jpg',time:2000,id_num:'2500',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2513.jpg',time:2000,id_num:'2513',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2530.jpg',time:2000,id_num:'2530',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2590.jpg',time:2000,id_num:'2590',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2660.jpg',time:2000,id_num:'2660',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2661.jpg',time:2000,id_num:'2661',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/2703.jpg',time:2000,id_num:'2703',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/3301.jpg',time:2000,id_num:'3301',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/5480.jpg',time:2000,id_num:'5480',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/6243.jpg',time:2000,id_num:'6243',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/7038.jpg',time:2000,id_num:'7038',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/7041.jpg',time:2000,id_num:'7041',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/7053.jpg',time:2000,id_num:'7053',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/7080.jpg',time:2000,id_num:'7080',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/7500.jpg',time:2000,id_num:'7500',val:'Neut',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/8470.jpg',time:2000,id_num:'8470',val:'Pos',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/9160.jpg',time:2000,id_num:'9160',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/9220.jpg',time:2000,id_num:'9220',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/9331.jpg',time:2000,id_num:'9331',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/9500.jpg',time:2000,id_num:'9500',val:'Neg',og:'FALSE'},
+				{src:'__CURRENT_PATH__/rlist1/9911.jpg',time:2000,id_num:'9911',val:'Neg',og:'FALSE'}
 			]
 			m.load=function(){
 				
@@ -132,11 +187,44 @@
                 $("body").addClass('body_background_white');
 				$("#header").css("display","none");
 				$("#footer").css("display","none");
-				$("#start_page__ID").show();
+				$("#start_page__ID").hide();
 				$('#AS__ID').hide();
 				$('#next__ID').hide();
 				$('#submit__ID').hide();
+				$('#introduction_1__ID').show()
+				$('#introduction__ID').show()
+				$('#introduction_2__ID').hide()
+				$('#introduction_3__ID').hide()
+				$('#introduction_4__ID').hide()
+
+				$("#start_page__ID").show();
+				$('#introduction_1__ID').hide()
+				$('#introduction__ID').hide()
             }
+		//----------------------------------
+		$('#intro__ID').on('click',function(){
+			$('#participant_div__ID').hide();
+			$('#title__ID').hide();
+			$('#introduction_'+intro_page+'__ID').hide();
+			intro_page++;
+			if(intro_page==5){
+				$('#introduction__ID').hide();
+				$('#start_page__ID').show();
+			}
+			else{
+				$('#introduction_'+intro_page+'__ID').show();
+			}
+
+
+
+			aff_slider = document.getElementById('introduction_4__ID');
+			top_part="Please rate your feelings of the previous picture on the scale below<br><br>Please rate the picture using <b>BOTH the sliders</b> (their order of apperance will change randomly). <b>Don't think too much</b> about it, just <b>rate how you feel</b> when watching it."; 
+            arousal_part = '<hr>Move the slider to rate your level of arousal \n<div class="arousal"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_sleepy.svg"></object> \n<input type="range" name="a_111" id="arousal_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_wideawake.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object></div>';
+            pleasure_part = '<hr>Move the slider to rate your level of pleasure \n<div class="pleasure"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_unhappy.svg"></object> \n<input type="range" name="p_111" id="pleasure_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_happy.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object> \n</div>';
+            aff_slider.innerHTML = top_part+arousal_part+pleasure_part;
+
+        })
+
 		//----------------------------------
         var random_array=function(array){
             var currentIndex=array.length, temporaryValue, randomIndex;
@@ -172,10 +260,22 @@
 				var r_I=all[II];
 				console.log(II+'---'+r_I);
 				$("#img__ID").attr("src",img_array[r_I].src);
-				setTimeout(get_response, img_array[r_I].time);
+				//setTimeout(get_response, img_array[r_I].time);
 				out_array_time.push(timeNow());
             }
         }
+        $('#know__ID').on('click',function(){
+			out_array_rec.push('know')
+			get_response();
+		})
+        $('#remember__ID').on('click',function(){
+			out_array_rec.push('remember')
+			get_response();
+        })
+        $('#no__ID').on('click',function(){
+			out_array_rec.push('no')
+			get_response();
+        })
 		//--------------------------------------
 		var get_response=function(){
 			$('#images__ID').hide();
@@ -296,6 +396,14 @@
     }
     </script>
     <style>
+#DI__ID .responsive{
+	width:100%;
+	height:auto;
+}		
+#DI__ID .responsive2{
+	width:100%;
+	height:auto;
+}		
 #DI__ID .mt-95 {
     }
 
@@ -449,6 +557,37 @@
 #DI__ID input[type=range]:focus::-ms-fill-upper {
 	background: #ccc;
 }
+#D__ID .btn-recog, #D__ID .btn-recog:active, #D__ID .btn-recog:visited, #D__ID .btn-recog:focus {
+    background-color: #ffffff;
+    border-color: #00263A;
+    font-family: 'Nunito Sans';
+    font-weight: lighter;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #000000;
+    text-align: center;
+    line-height: 18px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 5px;
+}
+#D__ID .btn-recog:hover {
+    background-color: #506A88;
+    border-color: #000000;
+    font-family: 'Nunito Sans';
+    font-weight: lighter;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 18px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 5px;
+}
+
 
         VmInclude:__CURRENT_PATH__/../../library/wappsystem-form.css
 
