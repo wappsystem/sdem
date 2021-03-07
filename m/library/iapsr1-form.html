@@ -25,22 +25,20 @@
                             </div>
 							<div id=introduction__ID>
 								<div id=introduction_1__ID><h6>
-									For approximately the next 15 minutes, you will be looking at pictures projected on
-									the screen in front of you, and you will be rating each picture in terms of how it
-									made you feel while viewing it. There are no right or wrong answers, so simply
-									respond as honestly as you can. These images are designed to elicit an emotional
-									response, if you feel distressed at any point and would like to discontinue please let
-									the researcher know. <br><br> Any questions?</h6><br>
+									This time you will be viewing images some of which you have seen before
+									and some which you have not seen. You will view each picture for 5
+									seconds and will indicate, by clicking the remember, know or no buttons
+									on the screen, if you have seen this image before in the initial image list. <br><br> 
+									Following this, you will have to rate the picture viewed on two scales;
+									happy versus unhappy and calm versus excited.<br><br>
+									This should last a maximum of 20 minutes.</h6><br>
 								</div>
-								<div id=introduction_2__ID><h6>
-									You will view each picture for 2 seconds and then will have to rate the picture viewed on two scales; happy versus unhappy and calm versus excited.</h6><br>
-									<img src="images/slider.png" class="responsive" > 
-								</div>
-								<div id=introduction_3__ID><h6>
-									First we will start with an example:</h6><br>
-									<img src="https://source.unsplash.com/FtZL0r4DZYk/900x600"  class=responsive2> 
-								</div>
-								<div id=introduction_4__ID>
+								<div id=introduction_2__ID ><h6>You will be presented with three options for every image- know, remember and no</h6>
+									<div style='text-align:left' >
+										<button type="button" class="btn btn-recog">&nbsp;&nbsp;&nbsp;&nbsp;Know&nbsp;&nbsp;&nbsp;&nbsp;</button><label>I am certain I have seen this image before</label><br>
+										<button type="button" class="btn btn-recog">Remember</button><label>This image is familiar to me, but I am not certain</label><br>
+										<button type="button" class="btn btn-recog">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button><label>I do not remember this image</label>
+									</div>
 								</div>
 								<br>
 								<button type=button id=intro__ID class='btn btn-secondary'>continue..</button><br>
@@ -77,14 +75,14 @@
             VmInclude:'__COMPONENT__/f/form.01.js'
             VmInclude:__CURRENT_PATH__/shared-form.js
             //-------------------------------------
-			var image_number=4;
+			var image_number=90;
 			var II=0;
 			var aff_slider,arousal_part,leasure_part,top_part;
 			var out_array_id=[];
 			var out_array_a=[];
 			var out_array_p=[];
 			var out_array_time=[];
-			var out_array_rec=[];
+			var out_array_recog=[];
 			var out_array_result=[];
 			var load2=m.load;
 			var intro_page=1;
@@ -194,12 +192,10 @@
 				$('#introduction_1__ID').show()
 				$('#introduction__ID').show()
 				$('#introduction_2__ID').hide()
-				$('#introduction_3__ID').hide()
-				$('#introduction_4__ID').hide()
 
-				$("#start_page__ID").show();
-				$('#introduction_1__ID').hide()
-				$('#introduction__ID').hide()
+				//$("#start_page__ID").show();
+				//$('#introduction_1__ID').hide()
+				//$('#introduction__ID').hide()
             }
 		//----------------------------------
 		$('#intro__ID').on('click',function(){
@@ -207,7 +203,7 @@
 			$('#title__ID').hide();
 			$('#introduction_'+intro_page+'__ID').hide();
 			intro_page++;
-			if(intro_page==5){
+			if(intro_page==3){
 				$('#introduction__ID').hide();
 				$('#start_page__ID').show();
 			}
@@ -238,7 +234,7 @@
             return array;
         }
         //----------------------------------
-        var group1=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59];
+        var group1=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89];
         var group1_random=random_array(group1);
         //----------------------------------
         var all=[];
@@ -265,15 +261,15 @@
             }
         }
         $('#know__ID').on('click',function(){
-			out_array_rec.push('know')
+			out_array_recog.push('know')
 			get_response();
 		})
         $('#remember__ID').on('click',function(){
-			out_array_rec.push('remember')
+			out_array_recog.push('remember')
 			get_response();
         })
         $('#no__ID').on('click',function(){
-			out_array_rec.push('no')
+			out_array_recog.push('no')
 			get_response();
         })
 		//--------------------------------------
@@ -320,67 +316,96 @@
 		//--------------------------------------
 		m.before_submit=function(data,index){
 			//console.log(JSON.stringify(out_array_id))
-			data.id_1440_a=out_array_a[out_array_id.indexOf('1440')];data.id_1440_p=out_array_p[out_array_id.indexOf('1440')];data.id_1440_time=out_array_time[out_array_id.indexOf('1440')];
-			data.id_1590_a=out_array_a[out_array_id.indexOf('1590')];data.id_1590_p=out_array_p[out_array_id.indexOf('1590')];data.id_1590_time=out_array_time[out_array_id.indexOf('1590')];
-			data.id_1720_a=out_array_a[out_array_id.indexOf('1720')];data.id_1720_p=out_array_p[out_array_id.indexOf('1720')];data.id_1720_time=out_array_time[out_array_id.indexOf('1720')];
-			data.id_1721_a=out_array_a[out_array_id.indexOf('1721')];data.id_1721_p=out_array_p[out_array_id.indexOf('1721')];data.id_1721_time=out_array_time[out_array_id.indexOf('1721')];
-			data.id_1750_a=out_array_a[out_array_id.indexOf('1750')];data.id_1750_p=out_array_p[out_array_id.indexOf('1750')];data.id_1750_time=out_array_time[out_array_id.indexOf('1750')];
-			data.id_1810_a=out_array_a[out_array_id.indexOf('1810')];data.id_1810_p=out_array_p[out_array_id.indexOf('1810')];data.id_1810_time=out_array_time[out_array_id.indexOf('1810')];
-			data.id_1920_a=out_array_a[out_array_id.indexOf('1920')];data.id_1920_p=out_array_p[out_array_id.indexOf('1920')];data.id_1920_time=out_array_time[out_array_id.indexOf('1920')];
-			data.id_2040_a=out_array_a[out_array_id.indexOf('2040')];data.id_2040_p=out_array_p[out_array_id.indexOf('2040')];data.id_2040_time=out_array_time[out_array_id.indexOf('2040')];
-			data.id_2050_a=out_array_a[out_array_id.indexOf('2050')];data.id_2050_p=out_array_p[out_array_id.indexOf('2050')];data.id_2050_time=out_array_time[out_array_id.indexOf('2050')];
-			data.id_2053_a=out_array_a[out_array_id.indexOf('2053')];data.id_2053_p=out_array_p[out_array_id.indexOf('2053')];data.id_2053_time=out_array_time[out_array_id.indexOf('2053')];
-			data.id_2057_a=out_array_a[out_array_id.indexOf('2057')];data.id_2057_p=out_array_p[out_array_id.indexOf('2057')];data.id_2057_time=out_array_time[out_array_id.indexOf('2057')];
-			data.id_2091_a=out_array_a[out_array_id.indexOf('2091')];data.id_2091_p=out_array_p[out_array_id.indexOf('2091')];data.id_2091_time=out_array_time[out_array_id.indexOf('2091')];
-			data.id_2170_a=out_array_a[out_array_id.indexOf('2170')];data.id_2170_p=out_array_p[out_array_id.indexOf('2170')];data.id_2170_time=out_array_time[out_array_id.indexOf('2170')];
-			data.id_2190_a=out_array_a[out_array_id.indexOf('2190')];data.id_2190_p=out_array_p[out_array_id.indexOf('2190')];data.id_2190_time=out_array_time[out_array_id.indexOf('2190')];
-			data.id_2205_a=out_array_a[out_array_id.indexOf('2205')];data.id_2205_p=out_array_p[out_array_id.indexOf('2205')];data.id_2205_time=out_array_time[out_array_id.indexOf('2205')];
-			data.id_2276_a=out_array_a[out_array_id.indexOf('2276')];data.id_2276_p=out_array_p[out_array_id.indexOf('2276')];data.id_2276_time=out_array_time[out_array_id.indexOf('2276')];
-			data.id_2360_a=out_array_a[out_array_id.indexOf('2360')];data.id_2360_p=out_array_p[out_array_id.indexOf('2360')];data.id_2360_time=out_array_time[out_array_id.indexOf('2360')];
-			data.id_2381_a=out_array_a[out_array_id.indexOf('2381')];data.id_2381_p=out_array_p[out_array_id.indexOf('2381')];data.id_2381_time=out_array_time[out_array_id.indexOf('2381')];
-			data.id_2495_a=out_array_a[out_array_id.indexOf('2495')];data.id_2495_p=out_array_p[out_array_id.indexOf('2495')];data.id_2495_time=out_array_time[out_array_id.indexOf('2495')];
-			data.id_2510_a=out_array_a[out_array_id.indexOf('2510')];data.id_2510_p=out_array_p[out_array_id.indexOf('2510')];data.id_2510_time=out_array_time[out_array_id.indexOf('2510')];
-			data.id_2516_a=out_array_a[out_array_id.indexOf('2516')];data.id_2516_p=out_array_p[out_array_id.indexOf('2516')];data.id_2516_time=out_array_time[out_array_id.indexOf('2516')];
-			data.id_2650_a=out_array_a[out_array_id.indexOf('2650')];data.id_2650_p=out_array_p[out_array_id.indexOf('2650')];data.id_2650_time=out_array_time[out_array_id.indexOf('2650')];
-			data.id_2750_a=out_array_a[out_array_id.indexOf('2750')];data.id_2750_p=out_array_p[out_array_id.indexOf('2750')];data.id_2750_time=out_array_time[out_array_id.indexOf('2750')];
-			data.id_2800_a=out_array_a[out_array_id.indexOf('2800')];data.id_2800_p=out_array_p[out_array_id.indexOf('2800')];data.id_2800_time=out_array_time[out_array_id.indexOf('2800')];
-			data.id_2840_a=out_array_a[out_array_id.indexOf('2840')];data.id_2840_p=out_array_p[out_array_id.indexOf('2840')];data.id_2840_time=out_array_time[out_array_id.indexOf('2840')];
-			data.id_2850_a=out_array_a[out_array_id.indexOf('2850')];data.id_2850_p=out_array_p[out_array_id.indexOf('2850')];data.id_2850_time=out_array_time[out_array_id.indexOf('2850')];
-			data.id_2880_a=out_array_a[out_array_id.indexOf('2880')];data.id_2880_p=out_array_p[out_array_id.indexOf('2880')];data.id_2880_time=out_array_time[out_array_id.indexOf('2880')];
-			data.id_2890_a=out_array_a[out_array_id.indexOf('2890')];data.id_2890_p=out_array_p[out_array_id.indexOf('2890')];data.id_2890_time=out_array_time[out_array_id.indexOf('2890')];
-			data.id_2900_a=out_array_a[out_array_id.indexOf('2900')];data.id_2900_p=out_array_p[out_array_id.indexOf('2900')];data.id_2900_time=out_array_time[out_array_id.indexOf('2900')];
-			data.id_3220_a=out_array_a[out_array_id.indexOf('3220')];data.id_3220_p=out_array_p[out_array_id.indexOf('3220')];data.id_3220_time=out_array_time[out_array_id.indexOf('3220')];
-			data.id_3230_a=out_array_a[out_array_id.indexOf('3230')];data.id_3230_p=out_array_p[out_array_id.indexOf('3230')];data.id_3230_time=out_array_time[out_array_id.indexOf('3230')];
-			data.id_3300_a=out_array_a[out_array_id.indexOf('3300')];data.id_3300_p=out_array_p[out_array_id.indexOf('3300')];data.id_3300_time=out_array_time[out_array_id.indexOf('3300')];
-			data.id_3350_a=out_array_a[out_array_id.indexOf('3350')];data.id_3350_p=out_array_p[out_array_id.indexOf('3350')];data.id_3350_time=out_array_time[out_array_id.indexOf('3350')];
-			data.id_4610_a=out_array_a[out_array_id.indexOf('4610')];data.id_4610_p=out_array_p[out_array_id.indexOf('4610')];data.id_4610_time=out_array_time[out_array_id.indexOf('4610')];
-			data.id_4626_a=out_array_a[out_array_id.indexOf('4626')];data.id_4626_p=out_array_p[out_array_id.indexOf('4626')];data.id_4626_time=out_array_time[out_array_id.indexOf('4626')];
-			data.id_5470_a=out_array_a[out_array_id.indexOf('5470')];data.id_5470_p=out_array_p[out_array_id.indexOf('5470')];data.id_5470_time=out_array_time[out_array_id.indexOf('5470')];
-			data.id_5510_a=out_array_a[out_array_id.indexOf('5510')];data.id_5510_p=out_array_p[out_array_id.indexOf('5510')];data.id_5510_time=out_array_time[out_array_id.indexOf('5510')];
-			data.id_5910_a=out_array_a[out_array_id.indexOf('5910')];data.id_5910_p=out_array_p[out_array_id.indexOf('5910')];data.id_5910_time=out_array_time[out_array_id.indexOf('5910')];
-			data.id_6212_a=out_array_a[out_array_id.indexOf('6212')];data.id_6212_p=out_array_p[out_array_id.indexOf('6212')];data.id_6212_time=out_array_time[out_array_id.indexOf('6212')];
-			data.id_6570_a=out_array_a[out_array_id.indexOf('6570')];data.id_6570_p=out_array_p[out_array_id.indexOf('6570')];data.id_6570_time=out_array_time[out_array_id.indexOf('6570')];
-			data.id_7004_a=out_array_a[out_array_id.indexOf('7004')];data.id_7004_p=out_array_p[out_array_id.indexOf('7004')];data.id_7004_time=out_array_time[out_array_id.indexOf('7004')];
-			data.id_7010_a=out_array_a[out_array_id.indexOf('7010')];data.id_7010_p=out_array_p[out_array_id.indexOf('7010')];data.id_7010_time=out_array_time[out_array_id.indexOf('7010')];
-			data.id_7020_a=out_array_a[out_array_id.indexOf('7020')];data.id_7020_p=out_array_p[out_array_id.indexOf('7020')];data.id_7020_time=out_array_time[out_array_id.indexOf('7020')];
-			data.id_7050_a=out_array_a[out_array_id.indexOf('7050')];data.id_7050_p=out_array_p[out_array_id.indexOf('7050')];data.id_7050_time=out_array_time[out_array_id.indexOf('7050')];
-			data.id_7100_a=out_array_a[out_array_id.indexOf('7100')];data.id_7100_p=out_array_p[out_array_id.indexOf('7100')];data.id_7100_time=out_array_time[out_array_id.indexOf('7100')];
-			data.id_7175_a=out_array_a[out_array_id.indexOf('7175')];data.id_7175_p=out_array_p[out_array_id.indexOf('7175')];data.id_7175_time=out_array_time[out_array_id.indexOf('7175')];
-			data.id_7185_a=out_array_a[out_array_id.indexOf('7185')];data.id_7185_p=out_array_p[out_array_id.indexOf('7185')];data.id_7185_time=out_array_time[out_array_id.indexOf('7185')];
-			data.id_7217_a=out_array_a[out_array_id.indexOf('7217')];data.id_7217_p=out_array_p[out_array_id.indexOf('7217')];data.id_7217_time=out_array_time[out_array_id.indexOf('7217')];
-			data.id_7233_a=out_array_a[out_array_id.indexOf('7233')];data.id_7233_p=out_array_p[out_array_id.indexOf('7233')];data.id_7233_time=out_array_time[out_array_id.indexOf('7233')];
-			data.id_7235_a=out_array_a[out_array_id.indexOf('7235')];data.id_7235_p=out_array_p[out_array_id.indexOf('7235')];data.id_7235_time=out_array_time[out_array_id.indexOf('7235')];
-			data.id_7491_a=out_array_a[out_array_id.indexOf('7491')];data.id_7491_p=out_array_p[out_array_id.indexOf('7491')];data.id_7491_time=out_array_time[out_array_id.indexOf('7491')];
-			data.id_8090_a=out_array_a[out_array_id.indexOf('8090')];data.id_8090_p=out_array_p[out_array_id.indexOf('8090')];data.id_8090_time=out_array_time[out_array_id.indexOf('8090')];
-			data.id_9000_a=out_array_a[out_array_id.indexOf('9000')];data.id_9000_p=out_array_p[out_array_id.indexOf('9000')];data.id_9000_time=out_array_time[out_array_id.indexOf('9000')];
-			data.id_9006_a=out_array_a[out_array_id.indexOf('9006')];data.id_9006_p=out_array_p[out_array_id.indexOf('9006')];data.id_9006_time=out_array_time[out_array_id.indexOf('9006')];
-			data.id_9050_a=out_array_a[out_array_id.indexOf('9050')];data.id_9050_p=out_array_p[out_array_id.indexOf('9050')];data.id_9050_time=out_array_time[out_array_id.indexOf('9050')];
-			data.id_9180_a=out_array_a[out_array_id.indexOf('9180')];data.id_9180_p=out_array_p[out_array_id.indexOf('9180')];data.id_9180_time=out_array_time[out_array_id.indexOf('9180')];
-			data.id_9421_a=out_array_a[out_array_id.indexOf('9421')];data.id_9421_p=out_array_p[out_array_id.indexOf('9421')];data.id_9421_time=out_array_time[out_array_id.indexOf('9421')];
-			data.id_9560_a=out_array_a[out_array_id.indexOf('9560')];data.id_9560_p=out_array_p[out_array_id.indexOf('9560')];data.id_9560_time=out_array_time[out_array_id.indexOf('9560')];
-			data.id_9561_a=out_array_a[out_array_id.indexOf('9561')];data.id_9561_p=out_array_p[out_array_id.indexOf('9561')];data.id_9561_time=out_array_time[out_array_id.indexOf('9561')];
-			data.id_9910_a=out_array_a[out_array_id.indexOf('9910')];data.id_9910_p=out_array_p[out_array_id.indexOf('9910')];data.id_9910_time=out_array_time[out_array_id.indexOf('9910')];			$("body").removeClass();
-            $("body").addClass('body_background_default');
+			data.id_1440_a=out_array_a[out_array_id.indexOf('1440')];data.id_1440_p=out_array_p[out_array_id.indexOf('1440')];data.id_1440_time=out_array_time[out_array_id.indexOf('1440')];data.id_1440_recog=out_array_recog[out_array_id.indexOf('1440')];
+			data.id_1590_a=out_array_a[out_array_id.indexOf('1590')];data.id_1590_p=out_array_p[out_array_id.indexOf('1590')];data.id_1590_time=out_array_time[out_array_id.indexOf('1590')];data.id_1590_recog=out_array_recog[out_array_id.indexOf('1590')];
+			data.id_1720_a=out_array_a[out_array_id.indexOf('1720')];data.id_1720_p=out_array_p[out_array_id.indexOf('1720')];data.id_1720_time=out_array_time[out_array_id.indexOf('1720')];data.id_1720_recog=out_array_recog[out_array_id.indexOf('1720')];
+			data.id_1721_a=out_array_a[out_array_id.indexOf('1721')];data.id_1721_p=out_array_p[out_array_id.indexOf('1721')];data.id_1721_time=out_array_time[out_array_id.indexOf('1721')];data.id_1721_recog=out_array_recog[out_array_id.indexOf('1721')];
+			data.id_1750_a=out_array_a[out_array_id.indexOf('1750')];data.id_1750_p=out_array_p[out_array_id.indexOf('1750')];data.id_1750_time=out_array_time[out_array_id.indexOf('1750')];data.id_1750_recog=out_array_recog[out_array_id.indexOf('1750')];
+			data.id_1810_a=out_array_a[out_array_id.indexOf('1810')];data.id_1810_p=out_array_p[out_array_id.indexOf('1810')];data.id_1810_time=out_array_time[out_array_id.indexOf('1810')];data.id_1810_recog=out_array_recog[out_array_id.indexOf('1810')];
+			data.id_1920_a=out_array_a[out_array_id.indexOf('1920')];data.id_1920_p=out_array_p[out_array_id.indexOf('1920')];data.id_1920_time=out_array_time[out_array_id.indexOf('1920')];data.id_1920_recog=out_array_recog[out_array_id.indexOf('1920')];
+			data.id_2040_a=out_array_a[out_array_id.indexOf('2040')];data.id_2040_p=out_array_p[out_array_id.indexOf('2040')];data.id_2040_time=out_array_time[out_array_id.indexOf('2040')];data.id_2040_recog=out_array_recog[out_array_id.indexOf('2040')];
+			data.id_2050_a=out_array_a[out_array_id.indexOf('2050')];data.id_2050_p=out_array_p[out_array_id.indexOf('2050')];data.id_2050_time=out_array_time[out_array_id.indexOf('2050')];data.id_2050_recog=out_array_recog[out_array_id.indexOf('2050')];
+			data.id_2053_a=out_array_a[out_array_id.indexOf('2053')];data.id_2053_p=out_array_p[out_array_id.indexOf('2053')];data.id_2053_time=out_array_time[out_array_id.indexOf('2053')];data.id_2053_recog=out_array_recog[out_array_id.indexOf('2053')];
+			data.id_2057_a=out_array_a[out_array_id.indexOf('2057')];data.id_2057_p=out_array_p[out_array_id.indexOf('2057')];data.id_2057_time=out_array_time[out_array_id.indexOf('2057')];data.id_2057_recog=out_array_recog[out_array_id.indexOf('2057')];
+			data.id_2091_a=out_array_a[out_array_id.indexOf('2091')];data.id_2091_p=out_array_p[out_array_id.indexOf('2091')];data.id_2091_time=out_array_time[out_array_id.indexOf('2091')];data.id_2091_recog=out_array_recog[out_array_id.indexOf('2091')];
+			data.id_2170_a=out_array_a[out_array_id.indexOf('2170')];data.id_2170_p=out_array_p[out_array_id.indexOf('2170')];data.id_2170_time=out_array_time[out_array_id.indexOf('2170')];data.id_2170_recog=out_array_recog[out_array_id.indexOf('2170')];
+			data.id_2190_a=out_array_a[out_array_id.indexOf('2190')];data.id_2190_p=out_array_p[out_array_id.indexOf('2190')];data.id_2190_time=out_array_time[out_array_id.indexOf('2190')];data.id_2190_recog=out_array_recog[out_array_id.indexOf('2190')];
+			data.id_2205_a=out_array_a[out_array_id.indexOf('2205')];data.id_2205_p=out_array_p[out_array_id.indexOf('2205')];data.id_2205_time=out_array_time[out_array_id.indexOf('2205')];data.id_2205_recog=out_array_recog[out_array_id.indexOf('2205')];
+			data.id_2276_a=out_array_a[out_array_id.indexOf('2276')];data.id_2276_p=out_array_p[out_array_id.indexOf('2276')];data.id_2276_time=out_array_time[out_array_id.indexOf('2276')];data.id_2276_recog=out_array_recog[out_array_id.indexOf('2276')];
+			data.id_2360_a=out_array_a[out_array_id.indexOf('2360')];data.id_2360_p=out_array_p[out_array_id.indexOf('2360')];data.id_2360_time=out_array_time[out_array_id.indexOf('2360')];data.id_2360_recog=out_array_recog[out_array_id.indexOf('2360')];
+			data.id_2381_a=out_array_a[out_array_id.indexOf('2381')];data.id_2381_p=out_array_p[out_array_id.indexOf('2381')];data.id_2381_time=out_array_time[out_array_id.indexOf('2381')];data.id_2381_recog=out_array_recog[out_array_id.indexOf('2381')];
+			data.id_2495_a=out_array_a[out_array_id.indexOf('2495')];data.id_2495_p=out_array_p[out_array_id.indexOf('2495')];data.id_2495_time=out_array_time[out_array_id.indexOf('2495')];data.id_2495_recog=out_array_recog[out_array_id.indexOf('2495')];
+			data.id_2510_a=out_array_a[out_array_id.indexOf('2510')];data.id_2510_p=out_array_p[out_array_id.indexOf('2510')];data.id_2510_time=out_array_time[out_array_id.indexOf('2510')];data.id_2510_recog=out_array_recog[out_array_id.indexOf('2510')];
+			data.id_2516_a=out_array_a[out_array_id.indexOf('2516')];data.id_2516_p=out_array_p[out_array_id.indexOf('2516')];data.id_2516_time=out_array_time[out_array_id.indexOf('2516')];data.id_2516_recog=out_array_recog[out_array_id.indexOf('2516')];
+			data.id_2650_a=out_array_a[out_array_id.indexOf('2650')];data.id_2650_p=out_array_p[out_array_id.indexOf('2650')];data.id_2650_time=out_array_time[out_array_id.indexOf('2650')];data.id_2650_recog=out_array_recog[out_array_id.indexOf('2650')];
+			data.id_2750_a=out_array_a[out_array_id.indexOf('2750')];data.id_2750_p=out_array_p[out_array_id.indexOf('2750')];data.id_2750_time=out_array_time[out_array_id.indexOf('2750')];data.id_2750_recog=out_array_recog[out_array_id.indexOf('2750')];
+			data.id_2800_a=out_array_a[out_array_id.indexOf('2800')];data.id_2800_p=out_array_p[out_array_id.indexOf('2800')];data.id_2800_time=out_array_time[out_array_id.indexOf('2800')];data.id_2800_recog=out_array_recog[out_array_id.indexOf('2800')];
+			data.id_2840_a=out_array_a[out_array_id.indexOf('2840')];data.id_2840_p=out_array_p[out_array_id.indexOf('2840')];data.id_2840_time=out_array_time[out_array_id.indexOf('2840')];data.id_2840_recog=out_array_recog[out_array_id.indexOf('2840')];
+			data.id_2850_a=out_array_a[out_array_id.indexOf('2850')];data.id_2850_p=out_array_p[out_array_id.indexOf('2850')];data.id_2850_time=out_array_time[out_array_id.indexOf('2850')];data.id_2850_recog=out_array_recog[out_array_id.indexOf('2850')];
+			data.id_2880_a=out_array_a[out_array_id.indexOf('2880')];data.id_2880_p=out_array_p[out_array_id.indexOf('2880')];data.id_2880_time=out_array_time[out_array_id.indexOf('2880')];data.id_2880_recog=out_array_recog[out_array_id.indexOf('2880')];
+			data.id_2890_a=out_array_a[out_array_id.indexOf('2890')];data.id_2890_p=out_array_p[out_array_id.indexOf('2890')];data.id_2890_time=out_array_time[out_array_id.indexOf('2890')];data.id_2890_recog=out_array_recog[out_array_id.indexOf('2890')];
+			data.id_2900_a=out_array_a[out_array_id.indexOf('2900')];data.id_2900_p=out_array_p[out_array_id.indexOf('2900')];data.id_2900_time=out_array_time[out_array_id.indexOf('2900')];data.id_2900_recog=out_array_recog[out_array_id.indexOf('2900')];
+			data.id_3220_a=out_array_a[out_array_id.indexOf('3220')];data.id_3220_p=out_array_p[out_array_id.indexOf('3220')];data.id_3220_time=out_array_time[out_array_id.indexOf('3220')];data.id_3220_recog=out_array_recog[out_array_id.indexOf('3220')];
+			data.id_3230_a=out_array_a[out_array_id.indexOf('3230')];data.id_3230_p=out_array_p[out_array_id.indexOf('3230')];data.id_3230_time=out_array_time[out_array_id.indexOf('3230')];data.id_3230_recog=out_array_recog[out_array_id.indexOf('3230')];
+			data.id_3300_a=out_array_a[out_array_id.indexOf('3300')];data.id_3300_p=out_array_p[out_array_id.indexOf('3300')];data.id_3300_time=out_array_time[out_array_id.indexOf('3300')];data.id_3300_recog=out_array_recog[out_array_id.indexOf('3300')];
+			data.id_3350_a=out_array_a[out_array_id.indexOf('3350')];data.id_3350_p=out_array_p[out_array_id.indexOf('3350')];data.id_3350_time=out_array_time[out_array_id.indexOf('3350')];data.id_3350_recog=out_array_recog[out_array_id.indexOf('3350')];
+			data.id_4610_a=out_array_a[out_array_id.indexOf('4610')];data.id_4610_p=out_array_p[out_array_id.indexOf('4610')];data.id_4610_time=out_array_time[out_array_id.indexOf('4610')];data.id_4610_recog=out_array_recog[out_array_id.indexOf('4610')];
+			data.id_4626_a=out_array_a[out_array_id.indexOf('4626')];data.id_4626_p=out_array_p[out_array_id.indexOf('4626')];data.id_4626_time=out_array_time[out_array_id.indexOf('4626')];data.id_4626_recog=out_array_recog[out_array_id.indexOf('4626')];
+			data.id_5470_a=out_array_a[out_array_id.indexOf('5470')];data.id_5470_p=out_array_p[out_array_id.indexOf('5470')];data.id_5470_time=out_array_time[out_array_id.indexOf('5470')];data.id_5470_recog=out_array_recog[out_array_id.indexOf('5470')];
+			data.id_5510_a=out_array_a[out_array_id.indexOf('5510')];data.id_5510_p=out_array_p[out_array_id.indexOf('5510')];data.id_5510_time=out_array_time[out_array_id.indexOf('5510')];data.id_5510_recog=out_array_recog[out_array_id.indexOf('5510')];
+			data.id_5910_a=out_array_a[out_array_id.indexOf('5910')];data.id_5910_p=out_array_p[out_array_id.indexOf('5910')];data.id_5910_time=out_array_time[out_array_id.indexOf('5910')];data.id_5910_recog=out_array_recog[out_array_id.indexOf('5910')];
+			data.id_6212_a=out_array_a[out_array_id.indexOf('6212')];data.id_6212_p=out_array_p[out_array_id.indexOf('6212')];data.id_6212_time=out_array_time[out_array_id.indexOf('6212')];data.id_6212_recog=out_array_recog[out_array_id.indexOf('6212')];
+			data.id_6570_a=out_array_a[out_array_id.indexOf('6570')];data.id_6570_p=out_array_p[out_array_id.indexOf('6570')];data.id_6570_time=out_array_time[out_array_id.indexOf('6570')];data.id_6570_recog=out_array_recog[out_array_id.indexOf('6570')];
+			data.id_7004_a=out_array_a[out_array_id.indexOf('7004')];data.id_7004_p=out_array_p[out_array_id.indexOf('7004')];data.id_7004_time=out_array_time[out_array_id.indexOf('7004')];data.id_7004_recog=out_array_recog[out_array_id.indexOf('7004')];
+			data.id_7010_a=out_array_a[out_array_id.indexOf('7010')];data.id_7010_p=out_array_p[out_array_id.indexOf('7010')];data.id_7010_time=out_array_time[out_array_id.indexOf('7010')];data.id_7010_recog=out_array_recog[out_array_id.indexOf('7010')];
+			data.id_7020_a=out_array_a[out_array_id.indexOf('7020')];data.id_7020_p=out_array_p[out_array_id.indexOf('7020')];data.id_7020_time=out_array_time[out_array_id.indexOf('7020')];data.id_7020_recog=out_array_recog[out_array_id.indexOf('7020')];
+			data.id_7050_a=out_array_a[out_array_id.indexOf('7050')];data.id_7050_p=out_array_p[out_array_id.indexOf('7050')];data.id_7050_time=out_array_time[out_array_id.indexOf('7050')];data.id_7050_recog=out_array_recog[out_array_id.indexOf('7050')];
+			data.id_7100_a=out_array_a[out_array_id.indexOf('7100')];data.id_7100_p=out_array_p[out_array_id.indexOf('7100')];data.id_7100_time=out_array_time[out_array_id.indexOf('7100')];data.id_7100_recog=out_array_recog[out_array_id.indexOf('7100')];
+			data.id_7175_a=out_array_a[out_array_id.indexOf('7175')];data.id_7175_p=out_array_p[out_array_id.indexOf('7175')];data.id_7175_time=out_array_time[out_array_id.indexOf('7175')];data.id_7175_recog=out_array_recog[out_array_id.indexOf('7175')];
+			data.id_7185_a=out_array_a[out_array_id.indexOf('7185')];data.id_7185_p=out_array_p[out_array_id.indexOf('7185')];data.id_7185_time=out_array_time[out_array_id.indexOf('7185')];data.id_7185_recog=out_array_recog[out_array_id.indexOf('7185')];
+			data.id_7217_a=out_array_a[out_array_id.indexOf('7217')];data.id_7217_p=out_array_p[out_array_id.indexOf('7217')];data.id_7217_time=out_array_time[out_array_id.indexOf('7217')];data.id_7217_recog=out_array_recog[out_array_id.indexOf('7217')];
+			data.id_7233_a=out_array_a[out_array_id.indexOf('7233')];data.id_7233_p=out_array_p[out_array_id.indexOf('7233')];data.id_7233_time=out_array_time[out_array_id.indexOf('7233')];data.id_7233_recog=out_array_recog[out_array_id.indexOf('7233')];
+			data.id_7235_a=out_array_a[out_array_id.indexOf('7235')];data.id_7235_p=out_array_p[out_array_id.indexOf('7235')];data.id_7235_time=out_array_time[out_array_id.indexOf('7235')];data.id_7235_recog=out_array_recog[out_array_id.indexOf('7235')];
+			data.id_7491_a=out_array_a[out_array_id.indexOf('7491')];data.id_7491_p=out_array_p[out_array_id.indexOf('7491')];data.id_7491_time=out_array_time[out_array_id.indexOf('7491')];data.id_7491_recog=out_array_recog[out_array_id.indexOf('7491')];
+			data.id_8090_a=out_array_a[out_array_id.indexOf('8090')];data.id_8090_p=out_array_p[out_array_id.indexOf('8090')];data.id_8090_time=out_array_time[out_array_id.indexOf('8090')];data.id_8090_recog=out_array_recog[out_array_id.indexOf('8090')];
+			data.id_9000_a=out_array_a[out_array_id.indexOf('9000')];data.id_9000_p=out_array_p[out_array_id.indexOf('9000')];data.id_9000_time=out_array_time[out_array_id.indexOf('9000')];data.id_9000_recog=out_array_recog[out_array_id.indexOf('9000')];
+			data.id_9006_a=out_array_a[out_array_id.indexOf('9006')];data.id_9006_p=out_array_p[out_array_id.indexOf('9006')];data.id_9006_time=out_array_time[out_array_id.indexOf('9006')];data.id_9006_recog=out_array_recog[out_array_id.indexOf('9006')];
+			data.id_9050_a=out_array_a[out_array_id.indexOf('9050')];data.id_9050_p=out_array_p[out_array_id.indexOf('9050')];data.id_9050_time=out_array_time[out_array_id.indexOf('9050')];data.id_9050_recog=out_array_recog[out_array_id.indexOf('9050')];
+			data.id_9180_a=out_array_a[out_array_id.indexOf('9180')];data.id_9180_p=out_array_p[out_array_id.indexOf('9180')];data.id_9180_time=out_array_time[out_array_id.indexOf('9180')];data.id_9180_recog=out_array_recog[out_array_id.indexOf('9180')];
+			data.id_9421_a=out_array_a[out_array_id.indexOf('9421')];data.id_9421_p=out_array_p[out_array_id.indexOf('9421')];data.id_9421_time=out_array_time[out_array_id.indexOf('9421')];data.id_9421_recog=out_array_recog[out_array_id.indexOf('9421')];
+			data.id_9560_a=out_array_a[out_array_id.indexOf('9560')];data.id_9560_p=out_array_p[out_array_id.indexOf('9560')];data.id_9560_time=out_array_time[out_array_id.indexOf('9560')];data.id_9560_recog=out_array_recog[out_array_id.indexOf('9560')];
+			data.id_9561_a=out_array_a[out_array_id.indexOf('9561')];data.id_9561_p=out_array_p[out_array_id.indexOf('9561')];data.id_9561_time=out_array_time[out_array_id.indexOf('9561')];data.id_9561_recog=out_array_recog[out_array_id.indexOf('9561')];
+			data.id_9910_a=out_array_a[out_array_id.indexOf('9910')];data.id_9910_p=out_array_p[out_array_id.indexOf('9910')];data.id_9910_time=out_array_time[out_array_id.indexOf('9910')];data.id_9910_recog=out_array_recog[out_array_id.indexOf('9910')];
+			data.id_1600_a=out_array_a[out_array_id.indexOf('1600')];data.id_1600_p=out_array_p[out_array_id.indexOf('1600')];data.id_1600_time=out_array_time[out_array_id.indexOf('1600')];data.id_1600_recog=out_array_recog[out_array_id.indexOf('1600')];
+			data.id_2038_a=out_array_a[out_array_id.indexOf('2038')];data.id_2038_p=out_array_p[out_array_id.indexOf('2038')];data.id_2038_time=out_array_time[out_array_id.indexOf('2038')];data.id_2038_recog=out_array_recog[out_array_id.indexOf('2038')];
+			data.id_2141_a=out_array_a[out_array_id.indexOf('2141')];data.id_2141_p=out_array_p[out_array_id.indexOf('2141')];data.id_2141_time=out_array_time[out_array_id.indexOf('2141')];data.id_2141_recog=out_array_recog[out_array_id.indexOf('2141')];
+			data.id_2165_a=out_array_a[out_array_id.indexOf('2165')];data.id_2165_p=out_array_p[out_array_id.indexOf('2165')];data.id_2165_time=out_array_time[out_array_id.indexOf('2165')];data.id_2165_recog=out_array_recog[out_array_id.indexOf('2165')];
+			data.id_2224_a=out_array_a[out_array_id.indexOf('2224')];data.id_2224_p=out_array_p[out_array_id.indexOf('2224')];data.id_2224_time=out_array_time[out_array_id.indexOf('2224')];data.id_2224_recog=out_array_recog[out_array_id.indexOf('2224')];
+			data.id_2280_a=out_array_a[out_array_id.indexOf('2280')];data.id_2280_p=out_array_p[out_array_id.indexOf('2280')];data.id_2280_time=out_array_time[out_array_id.indexOf('2280')];data.id_2280_recog=out_array_recog[out_array_id.indexOf('2280')];
+			data.id_2396_a=out_array_a[out_array_id.indexOf('2396')];data.id_2396_p=out_array_p[out_array_id.indexOf('2396')];data.id_2396_time=out_array_time[out_array_id.indexOf('2396')];data.id_2396_recog=out_array_recog[out_array_id.indexOf('2396')];
+			data.id_2397_a=out_array_a[out_array_id.indexOf('2397')];data.id_2397_p=out_array_p[out_array_id.indexOf('2397')];data.id_2397_time=out_array_time[out_array_id.indexOf('2397')];data.id_2397_recog=out_array_recog[out_array_id.indexOf('2397')];
+			data.id_2485_a=out_array_a[out_array_id.indexOf('2485')];data.id_2485_p=out_array_p[out_array_id.indexOf('2485')];data.id_2485_time=out_array_time[out_array_id.indexOf('2485')];data.id_2485_recog=out_array_recog[out_array_id.indexOf('2485')];
+			data.id_2500_a=out_array_a[out_array_id.indexOf('2500')];data.id_2500_p=out_array_p[out_array_id.indexOf('2500')];data.id_2500_time=out_array_time[out_array_id.indexOf('2500')];data.id_2500_recog=out_array_recog[out_array_id.indexOf('2500')];
+			data.id_2513_a=out_array_a[out_array_id.indexOf('2513')];data.id_2513_p=out_array_p[out_array_id.indexOf('2513')];data.id_2513_time=out_array_time[out_array_id.indexOf('2513')];data.id_2513_recog=out_array_recog[out_array_id.indexOf('2513')];
+			data.id_2530_a=out_array_a[out_array_id.indexOf('2530')];data.id_2530_p=out_array_p[out_array_id.indexOf('2530')];data.id_2530_time=out_array_time[out_array_id.indexOf('2530')];data.id_2530_recog=out_array_recog[out_array_id.indexOf('2530')];
+			data.id_2590_a=out_array_a[out_array_id.indexOf('2590')];data.id_2590_p=out_array_p[out_array_id.indexOf('2590')];data.id_2590_time=out_array_time[out_array_id.indexOf('2590')];data.id_2590_recog=out_array_recog[out_array_id.indexOf('2590')];
+			data.id_2660_a=out_array_a[out_array_id.indexOf('2660')];data.id_2660_p=out_array_p[out_array_id.indexOf('2660')];data.id_2660_time=out_array_time[out_array_id.indexOf('2660')];data.id_2660_recog=out_array_recog[out_array_id.indexOf('2660')];
+			data.id_2661_a=out_array_a[out_array_id.indexOf('2661')];data.id_2661_p=out_array_p[out_array_id.indexOf('2661')];data.id_2661_time=out_array_time[out_array_id.indexOf('2661')];data.id_2661_recog=out_array_recog[out_array_id.indexOf('2661')];
+			data.id_2703_a=out_array_a[out_array_id.indexOf('2703')];data.id_2703_p=out_array_p[out_array_id.indexOf('2703')];data.id_2703_time=out_array_time[out_array_id.indexOf('2703')];data.id_2703_recog=out_array_recog[out_array_id.indexOf('2703')];
+			data.id_3301_a=out_array_a[out_array_id.indexOf('3301')];data.id_3301_p=out_array_p[out_array_id.indexOf('3301')];data.id_3301_time=out_array_time[out_array_id.indexOf('3301')];data.id_3301_recog=out_array_recog[out_array_id.indexOf('3301')];
+			data.id_5480_a=out_array_a[out_array_id.indexOf('5480')];data.id_5480_p=out_array_p[out_array_id.indexOf('5480')];data.id_5480_time=out_array_time[out_array_id.indexOf('5480')];data.id_5480_recog=out_array_recog[out_array_id.indexOf('5480')];
+			data.id_6243_a=out_array_a[out_array_id.indexOf('6243')];data.id_6243_p=out_array_p[out_array_id.indexOf('6243')];data.id_6243_time=out_array_time[out_array_id.indexOf('6243')];data.id_6243_recog=out_array_recog[out_array_id.indexOf('6243')];
+			data.id_7038_a=out_array_a[out_array_id.indexOf('7038')];data.id_7038_p=out_array_p[out_array_id.indexOf('7038')];data.id_7038_time=out_array_time[out_array_id.indexOf('7038')];data.id_7038_recog=out_array_recog[out_array_id.indexOf('7038')];
+			data.id_7041_a=out_array_a[out_array_id.indexOf('7041')];data.id_7041_p=out_array_p[out_array_id.indexOf('7041')];data.id_7041_time=out_array_time[out_array_id.indexOf('7041')];data.id_7041_recog=out_array_recog[out_array_id.indexOf('7041')];
+			data.id_7053_a=out_array_a[out_array_id.indexOf('7053')];data.id_7053_p=out_array_p[out_array_id.indexOf('7053')];data.id_7053_time=out_array_time[out_array_id.indexOf('7053')];data.id_7053_recog=out_array_recog[out_array_id.indexOf('7053')];
+			data.id_7080_a=out_array_a[out_array_id.indexOf('7080')];data.id_7080_p=out_array_p[out_array_id.indexOf('7080')];data.id_7080_time=out_array_time[out_array_id.indexOf('7080')];data.id_7080_recog=out_array_recog[out_array_id.indexOf('7080')];
+			data.id_7500_a=out_array_a[out_array_id.indexOf('7500')];data.id_7500_p=out_array_p[out_array_id.indexOf('7500')];data.id_7500_time=out_array_time[out_array_id.indexOf('7500')];data.id_7500_recog=out_array_recog[out_array_id.indexOf('7500')];
+			data.id_8470_a=out_array_a[out_array_id.indexOf('8470')];data.id_8470_p=out_array_p[out_array_id.indexOf('8470')];data.id_8470_time=out_array_time[out_array_id.indexOf('8470')];data.id_8470_recog=out_array_recog[out_array_id.indexOf('8470')];
+			data.id_9160_a=out_array_a[out_array_id.indexOf('9160')];data.id_9160_p=out_array_p[out_array_id.indexOf('9160')];data.id_9160_time=out_array_time[out_array_id.indexOf('9160')];data.id_9160_recog=out_array_recog[out_array_id.indexOf('9160')];
+			data.id_9220_a=out_array_a[out_array_id.indexOf('9220')];data.id_9220_p=out_array_p[out_array_id.indexOf('9220')];data.id_9220_time=out_array_time[out_array_id.indexOf('9220')];data.id_9220_recog=out_array_recog[out_array_id.indexOf('9220')];
+			data.id_9331_a=out_array_a[out_array_id.indexOf('9331')];data.id_9331_p=out_array_p[out_array_id.indexOf('9331')];data.id_9331_time=out_array_time[out_array_id.indexOf('9331')];data.id_9331_recog=out_array_recog[out_array_id.indexOf('9331')];
+			data.id_9500_a=out_array_a[out_array_id.indexOf('9500')];data.id_9500_p=out_array_p[out_array_id.indexOf('9500')];data.id_9500_time=out_array_time[out_array_id.indexOf('9500')];data.id_9500_recog=out_array_recog[out_array_id.indexOf('9500')];
+			data.id_9911_a=out_array_a[out_array_id.indexOf('9911')];data.id_9911_p=out_array_p[out_array_id.indexOf('9911')];data.id_9911_time=out_array_time[out_array_id.indexOf('9911')];data.id_9911_recog=out_array_recog[out_array_id.indexOf('9911')];
 			$("#header").css("display","block");
 			$("#footer").css("display","block");
 			return true; 
