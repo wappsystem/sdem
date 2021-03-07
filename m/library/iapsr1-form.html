@@ -210,15 +210,6 @@
 			else{
 				$('#introduction_'+intro_page+'__ID').show();
 			}
-
-
-
-			aff_slider = document.getElementById('introduction_4__ID');
-			top_part="Please rate your feelings of the previous picture on the scale below<br><br>Please rate the picture using <b>BOTH the sliders</b> (their order of apperance will change randomly). <b>Don't think too much</b> about it, just <b>rate how you feel</b> when watching it."; 
-            arousal_part = '<hr>Move the slider to rate your level of arousal \n<div class="arousal"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_sleepy.svg"></object> \n<input type="range" name="a_111" id="arousal_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_wideawake.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object></div>';
-            pleasure_part = '<hr>Move the slider to rate your level of pleasure \n<div class="pleasure"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_unhappy.svg"></object> \n<input type="range" name="p_111" id="pleasure_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_happy.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object> \n</div>';
-            aff_slider.innerHTML = top_part+arousal_part+pleasure_part;
-
         })
 
 		//----------------------------------
