@@ -402,9 +402,11 @@
 			data.id_9331_a=out_array_a[out_array_id.indexOf('9331')];data.id_9331_p=out_array_p[out_array_id.indexOf('9331')];data.id_9331_time=out_array_time[out_array_id.indexOf('9331')];data.id_9331_recog=out_array_recog[out_array_id.indexOf('9331')];
 			data.id_9500_a=out_array_a[out_array_id.indexOf('9500')];data.id_9500_p=out_array_p[out_array_id.indexOf('9500')];data.id_9500_time=out_array_time[out_array_id.indexOf('9500')];data.id_9500_recog=out_array_recog[out_array_id.indexOf('9500')];
 			data.id_9911_a=out_array_a[out_array_id.indexOf('9911')];data.id_9911_p=out_array_p[out_array_id.indexOf('9911')];data.id_9911_time=out_array_time[out_array_id.indexOf('9911')];data.id_9911_recog=out_array_recog[out_array_id.indexOf('9911')];
-			var all_tp=0,pos_tp=0,neg_tp=0,neut_tp=0;
+			var all_tp_know=0,pos_tp_know=0,neg_tp_know=0,neut_tp_know=0;
+			var all_tp_rem=0,pos_tp_rem=0,neg_tp_rem=0,neut_tp_rem=0;
 			var all_fn=0,pos_fn=0,neg_fn=0,neut_fn=0;
-			var all_fp=0,pos_fp=0,neg_fp=0,neut_fp=0;
+			var all_fp_know=0,pos_fp_know=0,neg_fp_know=0,neut_fp_know=0;
+			var all_fp_rem=0,pos_fp_rem=0,neg_fp_rem=0,neut_fp_rem=0;
 			var all_tn=0,pos_tn=0,neg_tn=0,neut_tn=0;
 			for (var i=0;i<90;i++){
 /*					
@@ -416,16 +418,29 @@
 */
 				if(out_array_recog[out_array_id.indexOf(img_array[i].id_num)]!=undefined){
 					//console.log(img_array[i].val)
-					if(img_array[i].og=='TRUE' && out_array_recog[out_array_id.indexOf(img_array[i].id_num)]!="no"){ all_tp++;
+					if(img_array[i].og=='TRUE' && out_array_recog[out_array_id.indexOf(img_array[i].id_num)]=="know"){ all_tp_know++;
 						switch (img_array[i].val){ 
 							case 'Pos':
-								pos_tp++
+								pos_tp_know++
 								break;
 								case 'Neg':
-								neg_tp++
+								neg_tp_know++
 								break;
 								case 'Neut':
-								neut_tp++
+								neut_tp_know++
+								break;
+						}
+					}
+					if(img_array[i].og=='TRUE' && out_array_recog[out_array_id.indexOf(img_array[i].id_num)]=="remember"){ all_tp_rem++;
+						switch (img_array[i].val){ 
+							case 'Pos':
+								pos_tp_rem++
+								break;
+								case 'Neg':
+								neg_tp_rem++
+								break;
+								case 'Neut':
+								neut_tp_rem++
 								break;
 						}
 					}
@@ -442,16 +457,29 @@
 								break;
 						}
 					}
-					if(img_array[i].og=='FALSE' && out_array_recog[out_array_id.indexOf(img_array[i].id_num)]!="no"){ all_fp++;
+					if(img_array[i].og=='FALSE' && out_array_recog[out_array_id.indexOf(img_array[i].id_num)]=="know"){ all_fp_know++;
 						switch (img_array[i].val){ 
 							case 'Pos':
-								pos_fp++
+								pos_fp_know++
 								break;
 								case 'Neg':
-								neg_fp++
+								neg_fp_know++
 								break;
 								case 'Neut':
-								neut_fp++
+								neut_fp_know++
+								break;
+						}
+					}
+					if(img_array[i].og=='FALSE' && out_array_recog[out_array_id.indexOf(img_array[i].id_num)]=="remember"){ all_fp_rem++;
+						switch (img_array[i].val){ 
+							case 'Pos':
+								pos_fp_rem++
+								break;
+								case 'Neg':
+								neg_fp_rem++
+								break;
+								case 'Neut':
+								neut_fp_rem++
 								break;
 						}
 					}
@@ -470,20 +498,28 @@
 					}
 				}
 			}
-			data.all_TP=all_tp;
-			data.all_FP=all_fp;
+			data.all_TP_know=all_tp_know;
+			data.all_TP_rem=all_tp_rem;
+			data.all_FP_know=all_fp_know;
+			data.all_FP_rem=all_fp_rem;
 			data.all_TN=all_tn;
 			data.all_FN=all_fn;
-			data.neg_TP=neg_tp;
-			data.neg_FP=neg_fp;
+			data.neg_TP_know=neg_tp_know;
+			data.neg_TP_rem=neg_tp_rem;
+			data.neg_FP_know=neg_fp_know;
+			data.neg_FP_rem=neg_fp_rem;
 			data.neg_TN=neg_tn;
 			data.neg_FN=neg_fn;
-			data.pos_TP=pos_tp;
-			data.pos_FP=pos_fp;
+			data.pos_TP_know=pos_tp_know;
+			data.pos_TP_rem=pos_tp_rem;
+			data.pos_FP_know=pos_fp_know;
+			data.pos_FP_rem=pos_fp_rem;
 			data.pos_TN=pos_tn;
 			data.pos_FN=pos_fn;
-			data.neut_TP=neut_tp;
-			data.neut_FP=neut_fp;
+			data.neut_TP_know=neut_tp_know;
+			data.neut_TP_rem=neut_tp_rem;
+			data.neut_FP_know=neut_fp_know;
+			data.neut_FP_rem=neut_fp_rem;
 			data.neut_TN=neut_tn;
 			data.neut_FN=neut_fn;
 			$("#header").css("display","block");
