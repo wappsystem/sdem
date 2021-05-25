@@ -41,11 +41,11 @@
 									</div>
 								</div>
 								<br>
-								<button type=button id=intro__ID class='btn btn-secondary'>continue..</button><br>
+								<button type=button id=intro__ID class='btn btn-info'>continue..</button><br>
 							</div>
 							<div id=start_page__ID><h6>
 								When you are ready to begin press Start</h6><br>
-								<button type=button id=start__ID class='btn btn-secondary'>Start</button><br>
+								<button type=button id=start__ID class='btn btn-info'>Start</button><br>
 							</div>
 							<div id=images__ID style='display:none' >
 								<div>
@@ -212,16 +212,21 @@
             }
 		//----------------------------------
 		$('#intro__ID').on('click',function(){
-			$('#participant_div__ID').hide();
-			$('#title__ID').hide();
-			$('#introduction_'+intro_page+'__ID').hide();
-			intro_page++;
-			if(intro_page==3){
-				$('#introduction__ID').hide();
-				$('#start_page__ID').show();
+			if($('#Participant__ID').val()==undefined || $('#Participant__ID').val()==''){
+				$vm.alert('Please select a Participant')
 			}
 			else{
-				$('#introduction_'+intro_page+'__ID').show();
+				$('#participant_div__ID').hide();
+				$('#title__ID').hide();
+				$('#introduction_'+intro_page+'__ID').hide();
+				intro_page++;
+				if(intro_page==3){
+					$('#introduction__ID').hide();
+					$('#start_page__ID').show();
+				}
+				else{
+					$('#introduction_'+intro_page+'__ID').show();
+				}
 			}
         })
 
@@ -248,12 +253,12 @@
 		//--------------------------------------
 		var timeout;
         var set_img=function(){
-			$('#images__ID').show();
 			var r_I=all[II];
-			console.log(II+'---'+r_I);
+			console.log(II+'---'+r_I+' - '+img_array[r_I].id_num);
 			//$("#img__ID").attr("src",img_array[r_I].src);
 			timeout=setTimeout(hide_image, img_array[r_I].time);
 			out_array_time.push(timeNow());
+			$('#images__ID').show();
         }
 		//--------------------------------------
 		var hide_image=function(){
@@ -274,12 +279,17 @@
 			clearTimeout(timeout);
 			get_response();
         })
+        //----------------------------------
+        $('#sub__ID').on('click',function(){
+			console.log("Submit")
+			$('#submit__ID').click();
+        })
 		//--------------------------------------
 		var get_response=function(){
 			$('#images__ID').hide();
 			var r_I=all[II];
 			aff_slider = document.getElementById('AffectiveSlider__ID');
-			top_part="Please rate the picture using <b>BOTH the sliders</b>. <b>Don't think too much</b> about it, just <b>rate how you feel</b> when watching it."; 
+			top_part="Please rate the picture using <b>BOTH the sliders</b>. <b>Don't think too much</b> about it, just <b>rate how you feel</b> when watching it.<button style='border:0;background-color:white' id=sub__ID>&nbsp;&nbsp;&nbsp;&nbsp;</button>"; 
             arousal_part = '<hr>Move the slider to rate your level of arousal \n<div class="arousal"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_sleepy.svg"></object> \n<input type="range" name="a_'+img_array[r_I].id_num+'" id="arousal_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_wideawake.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object></div>';
             pleasure_part = '<hr>Move the slider to rate your level of pleasure \n<div class="pleasure"> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_unhappy.svg"></object> \n<input type="range" name="p_'+img_array[r_I].id_num+'" id="pleasure_id" value=".5" min="0" max="1" step=".01" /> \n<object class="arousal_svg" type="image/svg+xml" data="images/AS_happy.svg"></object> \n<object class="intensity_cue_svg" type="image/svg+xml" data="images/AS_intensity_cue.svg"></object> \n</div>';
             aff_slider.innerHTML = top_part+arousal_part+pleasure_part;
