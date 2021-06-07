@@ -279,3 +279,24 @@
 #D__ID .labelright {
     margin-left:-15px;
 }
+@media (min-width: 576px) {
+    #D__ID  fieldset.subquestions br { display: none; }
+    #D__ID label {
+        margin-left:0;
+    }
+    #D__ID .labelleft {
+        margin-left:0;
+    }
+}
+@media (min-width: 1200px) {
+    #D__ID  .container {max-width:900px}
+}
+@media (min-width: 992px) {
+    #D__ID  .container {max-width:900px}
+}
+@media (min-width: 768px) {
+    #D__ID  .container {max-width:900px}
+}
+@media (min-width: 576px) {
+    #D__ID  .container {max-width:900px}
+}
