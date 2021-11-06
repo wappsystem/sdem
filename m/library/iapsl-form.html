@@ -51,7 +51,7 @@
 							</div>
 							<div id=images__ID style='display:none' >
 								<div>
-									<img id=img__ID width=1024 height=768 style='float:right' >
+									<img id=img__ID width=1024 height=768 style='float:none' >
 									<h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
 									<button type="button" class="btn btn-blank" disabled >&nbsp;&nbsp;&nbsp;&nbsp;Know&nbsp;&nbsp;&nbsp;&nbsp;</button><br>
 									<button type="button" class="btn btn-blank" disabled >Remember</button><br>
@@ -165,24 +165,22 @@
 				}
 				document.getElementById("F__ID").reset();
 
-				$('#participant_div__ID').show();
+                if($vm.online_questionnaire!=1) {
+                    $('#participant_div__ID').show();
+                }
 
-				image_number=60;
-				II=0;
 				//aff_slider,arousal_part,leasure_part,top_part;
+				intro_page=1;
+				II=0;
 				out_array_id=[];
 				out_array_a=[];
 				out_array_p=[];
 				out_array_time=[];
-				intro_page=1;
 				group1_random=[];
 				all=[];
 
 
 				load2();
-				intro_page=1;
-				II=0;
-				all=[];
 				group1_random=random_array(group1);
 				for(i=0;i<image_number;i++){
 					all.push(0+group1[i])
