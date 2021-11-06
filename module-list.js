@@ -28,6 +28,8 @@
 
         "file-notes-data-sdem":		{url:"$H/m/library/file-notes-data.html",Table:"file-notes-sdem",form_module:"file-notes-form-sdem",task_name:"Unscheduled - File Notes"},
         "file-notes-form-sdem":		{url:"$H/m/library/file-notes-form.html",Table:"file-notes-sdem",task_name:"Unscheduled - File Notes"},
+        "adverse-event-data-sdem":		{url:"$H/m/library/adverse-event-data.html",Table:"adverse-event-sdem",form_module:"adverse-event-form-sdem",task_name:"Unscheduled - Adverse Event"},
+        "adverse-event-form-sdem":		{url:"$H/m/library/adverse-event-form.html",Table:"adverse-event-sdem",task_name:"Unscheduled - Adverse Event"},
         "consent-data-sdem":		        {url:"$H/m/library/consent-data.html",Table:"consent-sdem",form_module:"consent-form-sdem",task_name:"Self Report Screening - Consent"},
         "consent-form-sdem":		        {url:"$H/m/library/consent-form.html",Table:"consent-sdem",task_name:"Self Report Screening - Consent"},
         "gds-data-sdem":		{url:"$H/m/library/gds-data.html",Table:"gds-sdem",form_module:"gds-form-sdem",task_name:"Self Report Screening - Geriatric Depression Scale"},
@@ -44,8 +46,8 @@
         "ethnicity-form-sdem":	    {url:"$H/m/library/ethnicity-form.html",Table:"ethnicity-sdem",task_name:"Self Report Screening - Ethnicity questionnaire"},
         "education-data-sdem":	    {url:"$H/m/library/education-data.html",Table:"education-sdem",form_module:"education-form-sdem",task_name:"Self Report Screening - Education questionnaire"},
         "education-form-sdem":	    {url:"$H/m/library/education-form.html",Table:"education-sdem",task_name:"Self Report Screening - Education questionnaire"},
-        "wristox-data-sdem":	    {url:"$H/m/library/wristox-data.html",Table:"wristox-sdem",form_module:"wristox-form-sdem",task_name:"Screening - Wristox"},
-        "wristox-form-sdem":	    {url:"$H/m/library/wristox-form.html",Table:"wristox-sdem",task_name:"Screening - Wristox"},
+        "wristox-s-data-sdem":	    {url:"$H/m/library/wristox-data.html",Table:"wristox-sdem",form_module:"wristox-s-form-sdem",task_name:"Screening - Wristox"},
+        "wristox-s-form-sdem":	    {url:"$H/m/library/wristox-form.html",Table:"wristox-sdem",task_name:"Screening - Wristox"},
 
         "date-s-data-sdem":                {url:"$H/m/library/date-data.html",Table:"date-s-sdem",form_module:"date-s-form-sdem",task_name:"Screening - Visit Date"},
         "date-s-form-sdem":                {url:"$H/m/library/date-form.html",Table:"date-s-sdem",task_name:"Screening - Visit Date"},
@@ -57,8 +59,8 @@
         "ravlts-s-form-sdem":                {url:"$H/m/library/ravlts-form.html",Table:"ravlts-s-sdem",task_name:"Screening - Rey Auditory Verbal Learning Test Scores"},
         "tmts-s-data-sdem":                {url:"$H/m/library/tmts-data.html",Table:"tmts-s-sdem",form_module:"tmts-s-form-sdem",task_name:"Screening - Trail Making Test Scores"},
         "tmts-s-form-sdem":                {url:"$H/m/library/tmts-form.html",Table:"tmts-s-sdem",task_name:"Screening - Trail Making Test Scores"},
-        "stroop-s-data-sdem":		            {url:"$H/m/library/stroop-data.html",Table:"stroop-sdem",form_module:"stroop-s-form-sdem",task_name:"Screening - Stroop Data Entry"},
-        "stroop-s-form-sdem":		            {url:"$H/m/library/stroop-form.html",Table:"stroop-sdem",task_name:"Screening - Stroop Data Entry"},
+        "stroop-s-data-sdem":		            {url:"$H/m/library/stroop-data.html",Table:"stroop-s-sdem",form_module:"stroop-s-form-sdem",task_name:"Screening - Stroop Data Entry"},
+        "stroop-s-form-sdem":		            {url:"$H/m/library/stroop-form.html",Table:"stroop-s-sdem",task_name:"Screening - Stroop Data Entry"},
 //        "stroop-colour-s-data-sdem":		            {url:"$H/m/neurocog/stroop-colour-data.html",Table:"stroop-colour-s-sdem",form_module:"stroop-colour-s-form-sdem",task_name:"Screening - Stroop Colour"},
 //        "stroop-colour-s-form-sdem":		            {url:"$H/m/neurocog/stroop-colour-form.html",Table:"stroop-colour-s-sdem",task_name:"Screening - Stroop Colour"},
 
