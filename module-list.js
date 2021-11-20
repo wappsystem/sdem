@@ -48,6 +48,8 @@
         "education-form-sdem":	    {url:"$H/m/library/education-form.html",Table:"education-sdem",task_name:"Self Report Screening - Education questionnaire"},
         "wristox-s-data-sdem":	    {url:"$H/m/library/wristox-data.html",Table:"wristox-sdem",form_module:"wristox-s-form-sdem",task_name:"Screening - Wristox"},
         "wristox-s-form-sdem":	    {url:"$H/m/library/wristox-form.html",Table:"wristox-sdem",task_name:"Screening - Wristox"},
+        "mmse-s-data-sdem":	    {url:"$H/m/library/mmse-data.html",Table:"mmse-sdem",form_module:"mmse-s-form-sdem",task_name:"Screening - Mini‐Mental State Examination Score"},
+        "mmse-s-form-sdem":	    {url:"$H/m/library/mmse-form.html",Table:"mmse-sdem",task_name:"Screening - Mini‐Mental State Examination Score"},
 
         "date-s-data-sdem":                {url:"$H/m/library/date-data.html",Table:"date-s-sdem",form_module:"date-s-form-sdem",task_name:"Screening - Visit Date"},
         "date-s-form-sdem":                {url:"$H/m/library/date-form.html",Table:"date-s-sdem",task_name:"Screening - Visit Date"},
