@@ -28,10 +28,10 @@
                                 <div class="questiongroup ">
                                     <fieldset class=""><label></label>
                                         <div class=row>
-                                            <div class="col-sm-3"><label><span class="">MMSE 1</span><input type=number step=0.1 class=form-control name=MMSE_1></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 2</span><input type=number step=0.1 class=form-control name=MMSE_2></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 3</span><input type=number step=0.1 class=form-control name=MMSE_3></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 4</span><input type=number step=0.1 class=form-control name=MMSE_4></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 1</span><input type=number step=0.001 class=form-control name=MMSE_1></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 2</span><input type=number step=0.001 class=form-control name=MMSE_2></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 3</span><input type=number step=0.001 class=form-control name=MMSE_3></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 4</span><input type=number step=0.001 class=form-control name=MMSE_4></label></div>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -40,10 +40,10 @@
                                 <div class="questiongroup ">
                                     <fieldset class=""><label></label>
                                         <div class=row>
-                                            <div class="col-sm-3"><label><span class="">MMSE 5</span><input type=number step=0.1 class=form-control name=MMSE_5></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 6</span><input type=number step=0.1 class=form-control name=MMSE_6></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 7</span><input type=number step=0.1 class=form-control name=MMSE_7></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 8</span><input type=number step=0.1 class=form-control name=MMSE_8></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 5</span><input type=number step=0.001 class=form-control name=MMSE_5></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 6</span><input type=number step=0.001 class=form-control name=MMSE_6></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 7</span><input type=number step=0.001 class=form-control name=MMSE_7></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 8</span><input type=number step=0.001 class=form-control name=MMSE_8></label></div>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -52,10 +52,10 @@
                                 <div class="questiongroup ">
                                     <fieldset class=""><label></label>
                                         <div class=row>
-                                            <div class="col-sm-3"><label><span class="">MMSE 9</span><input type=number step=0.1 class=form-control name=MMSE_9></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 10</span><input type=number step=0.1 class=form-control name=MMSE_10></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 11</span><input type=number step=0.1 class=form-control name=MMSE_11></label></div>
-                                            <div class="col-sm-3"><label><span class="">MMSE 12</span><input type=number step=0.1 class=form-control name=MMSE_12></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 9</span><input type=number step=0.001 class=form-control name=MMSE_9></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 10</span><input type=number step=0.001 class=form-control name=MMSE_10></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 11</span><input type=number step=0.001 class=form-control name=MMSE_11></label></div>
+                                            <div class="col-sm-3"><label><span class="">MMSE 12</span><input type=number step=0.001 class=form-control name=MMSE_12></label></div>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -64,8 +64,8 @@
                                 <div class="questiongroup ">
                                     <fieldset class=""><label></label>
                                         <div class=row>
-                                            <div class="col-sm-3"><label><span class="">Total Score</span><input type=number step=0.1 class=form-control name=MMSE_Total></label></div>
-                                            <div class="col-sm-3"><label><span class="">Adjusted Score</span><input type=number step=0.1 class=form-control name=MMSE_Adjusted></label></div>
+                                            <div class="col-sm-3"><label><span class="">Total Score</span><input type=number step=0.001 class=form-control name=MMSE_Total></label></div>
+                                            <div class="col-sm-3"><label><span class="">Adjusted Score</span><input type=number step=0.001 class=form-control name=MMSE_Adjusted></label></div>
                                         </div>
                                     </fieldset>
                                 </div>
@@ -108,7 +108,7 @@
             //-------------------------------------
             var before_submit=m.before_submit;
             m.before_submit=function(data,index){
-                data.MMSE_Total=((parseFloat(data.MMSE_1)+parseFloat(data.MMSE_2)+parseFloat(data.MMSE_3)+parseFloat(data.MMSE_4)+parseFloat(data.MMSE_5)+parseFloat(data.MMSE_6)+parseFloat(data.MMSE_7)+parseFloat(data.MMSE_8)+parseFloat(data.MMSE_9)+parseFloat(data.MMSE_10)+parseFloat(data.MMSE_11)+parseFloat(data.MMSE_12))/30).toFixed(1);
+                //data.MMSE_Total=((parseFloat(data.MMSE_1)+parseFloat(data.MMSE_2)+parseFloat(data.MMSE_3)+parseFloat(data.MMSE_4)+parseFloat(data.MMSE_5)+parseFloat(data.MMSE_6)+parseFloat(data.MMSE_7)+parseFloat(data.MMSE_8)+parseFloat(data.MMSE_9)+parseFloat(data.MMSE_10)+parseFloat(data.MMSE_11)+parseFloat(data.MMSE_12))/30).toFixed(1);
                 return before_submit(data,index);;
             }
             //-------------------------------------
