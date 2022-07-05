@@ -1,0 +1,386 @@
+<div id=DI__ID>
+    <!--third html start -->
+    <div class="container mt-95 mb-3">
+        <div class="row">
+            <!-- form container start -->
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12 mx-auto formbox">
+                <div class="row">
+                    <div class="col-12">
+						<form id="F__ID" class="" >
+                        <!-- form start -->
+							<div id=images__ID style='' >
+								<img id=img__ID width=1024 height=768 style='float:none' >
+							</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function F__ID(){
+            //-------------------------------------
+            VmInclude:'__COMPONENT__/f/form.01.js'
+            VmInclude:__CURRENT_PATH__/shared-form.js
+            //-------------------------------------
+			var timerHandle="";
+			var image_number=60;
+			var II=0;
+			var aff_slider,arousal_part,leasure_part,top_part;
+			var out_array_id=[];
+			var out_array_a=[];
+			var out_array_p=[];
+			var out_array_time=[];
+			var load2=m.load;
+			var intro_page=1;
+			var img_array=[
+			{src:'__CURRENT_PATH__/lstim/1440.jpg'},
+{src:'__CURRENT_PATH__/lstim/1500.jpg'},
+{src:'__CURRENT_PATH__/lstim/1590.jpg'},
+{src:'__CURRENT_PATH__/lstim/1710.jpg'},
+{src:'__CURRENT_PATH__/lstim/1720.jpg'},
+{src:'__CURRENT_PATH__/lstim/1721.jpg'},
+{src:'__CURRENT_PATH__/lstim/1750.jpg'},
+{src:'__CURRENT_PATH__/lstim/1810.jpg'},
+{src:'__CURRENT_PATH__/lstim/1811.jpg'},
+{src:'__CURRENT_PATH__/lstim/1920.jpg'},
+{src:'__CURRENT_PATH__/lstim/2040.jpg'},
+{src:'__CURRENT_PATH__/lstim/2050.jpg'},
+{src:'__CURRENT_PATH__/lstim/2053.jpg'},
+{src:'__CURRENT_PATH__/lstim/2057.jpg'},
+{src:'__CURRENT_PATH__/lstim/2091.jpg'},
+{src:'__CURRENT_PATH__/lstim/2170.jpg'},
+{src:'__CURRENT_PATH__/lstim/2190.jpg'},
+{src:'__CURRENT_PATH__/lstim/2205.jpg'},
+{src:'__CURRENT_PATH__/lstim/2276.jpg'},
+{src:'__CURRENT_PATH__/lstim/2341.jpg'},
+{src:'__CURRENT_PATH__/lstim/2360.jpg'},
+{src:'__CURRENT_PATH__/lstim/2381.jpg'},
+{src:'__CURRENT_PATH__/lstim/2495.jpg'},
+{src:'__CURRENT_PATH__/lstim/2510.jpg'},
+{src:'__CURRENT_PATH__/lstim/2516.jpg'},
+{src:'__CURRENT_PATH__/lstim/2550.jpg'},
+{src:'__CURRENT_PATH__/lstim/2650.jpg'},
+{src:'__CURRENT_PATH__/lstim/2749.jpg'},
+{src:'__CURRENT_PATH__/lstim/2750.jpg'},
+{src:'__CURRENT_PATH__/lstim/2800.jpg'},
+{src:'__CURRENT_PATH__/lstim/2840.jpg'},
+{src:'__CURRENT_PATH__/lstim/2850.jpg'},
+{src:'__CURRENT_PATH__/lstim/2880.jpg'},
+{src:'__CURRENT_PATH__/lstim/2890.jpg'},
+{src:'__CURRENT_PATH__/lstim/2900.jpg'},
+{src:'__CURRENT_PATH__/lstim/3180.jpg'},
+{src:'__CURRENT_PATH__/lstim/3220.jpg'},
+{src:'__CURRENT_PATH__/lstim/3230.jpg'},
+{src:'__CURRENT_PATH__/lstim/3300.jpg'},
+{src:'__CURRENT_PATH__/lstim/3350.jpg'},
+{src:'__CURRENT_PATH__/lstim/3550.jpg'},
+{src:'__CURRENT_PATH__/lstim/4610.jpg'},
+{src:'__CURRENT_PATH__/lstim/4626.jpg'},
+{src:'__CURRENT_PATH__/lstim/5470.jpg'},
+{src:'__CURRENT_PATH__/lstim/5510.jpg'},
+{src:'__CURRENT_PATH__/lstim/5740.jpg'},
+{src:'__CURRENT_PATH__/lstim/5831.jpg'},
+{src:'__CURRENT_PATH__/lstim/5910.jpg'},
+{src:'__CURRENT_PATH__/lstim/6212.jpg'},
+{src:'__CURRENT_PATH__/lstim/6570.jpg'},
+{src:'__CURRENT_PATH__/lstim/6821.jpg'},
+{src:'__CURRENT_PATH__/lstim/6838.jpg'},
+{src:'__CURRENT_PATH__/lstim/7004.jpg'},
+{src:'__CURRENT_PATH__/lstim/7010.jpg'},
+{src:'__CURRENT_PATH__/lstim/7020.jpg'},
+{src:'__CURRENT_PATH__/lstim/7035.jpg'},
+{src:'__CURRENT_PATH__/lstim/7050.jpg'},
+{src:'__CURRENT_PATH__/lstim/7090.jpg'},
+{src:'__CURRENT_PATH__/lstim/7100.jpg'},
+{src:'__CURRENT_PATH__/lstim/7175.jpg'},
+{src:'__CURRENT_PATH__/lstim/7185.jpg'},
+{src:'__CURRENT_PATH__/lstim/7217.jpg'},
+{src:'__CURRENT_PATH__/lstim/7233.jpg'},
+{src:'__CURRENT_PATH__/lstim/7235.jpg'},
+{src:'__CURRENT_PATH__/lstim/7491.jpg'},
+{src:'__CURRENT_PATH__/lstim/7550.jpg'},
+{src:'__CURRENT_PATH__/lstim/7705.jpg'},
+{src:'__CURRENT_PATH__/lstim/7950.jpg'},
+{src:'__CURRENT_PATH__/lstim/8090.jpg'},
+{src:'__CURRENT_PATH__/lstim/8540.jpg'},
+{src:'__CURRENT_PATH__/lstim/9000.jpg'},
+{src:'__CURRENT_PATH__/lstim/9006.jpg'},
+{src:'__CURRENT_PATH__/lstim/9050.jpg'},
+{src:'__CURRENT_PATH__/lstim/9180.jpg'},
+{src:'__CURRENT_PATH__/lstim/9340.jpg'},
+{src:'__CURRENT_PATH__/lstim/9421.jpg'},
+{src:'__CURRENT_PATH__/lstim/9530.jpg'},
+{src:'__CURRENT_PATH__/lstim/9560.jpg'},
+{src:'__CURRENT_PATH__/lstim/9561.jpg'},
+{src:'__CURRENT_PATH__/lstim/9910.jpg'},
+{src:'__CURRENT_PATH__/lstim/9920.jpg'},
+{src:'__CURRENT_PATH__/rlist1/1600.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2038.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2141.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2165.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2224.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2260.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2280.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2304.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2396.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2397.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2440.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2455.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2485.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2500.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2513.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2530.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2590.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2660.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2661.jpg'},
+{src:'__CURRENT_PATH__/rlist1/2703.jpg'},
+{src:'__CURRENT_PATH__/rlist1/3301.jpg'},
+{src:'__CURRENT_PATH__/rlist1/5480.jpg'},
+{src:'__CURRENT_PATH__/rlist1/5779.jpg'},
+{src:'__CURRENT_PATH__/rlist1/6243.jpg'},
+{src:'__CURRENT_PATH__/rlist1/7038.jpg'},
+{src:'__CURRENT_PATH__/rlist1/7041.jpg'},
+{src:'__CURRENT_PATH__/rlist1/7053.jpg'},
+{src:'__CURRENT_PATH__/rlist1/7080.jpg'},
+{src:'__CURRENT_PATH__/rlist1/7150.jpg'},
+{src:'__CURRENT_PATH__/rlist1/7224.jpg'},
+{src:'__CURRENT_PATH__/rlist1/7500.jpg'},
+{src:'__CURRENT_PATH__/rlist1/8470.jpg'},
+{src:'__CURRENT_PATH__/rlist1/9160.jpg'},
+{src:'__CURRENT_PATH__/rlist1/9220.jpg'},
+{src:'__CURRENT_PATH__/rlist1/9331.jpg'},
+{src:'__CURRENT_PATH__/rlist1/9500.jpg'},
+{src:'__CURRENT_PATH__/rlist1/9520.jpg'},
+{src:'__CURRENT_PATH__/rlist1/9620.jpg'},
+{src:'__CURRENT_PATH__/rlist1/9911.jpg'},
+{src:'__CURRENT_PATH__/rlist2/1441.jpg'},
+{src:'__CURRENT_PATH__/rlist2/1463.jpg'},
+{src:'__CURRENT_PATH__/rlist2/1610.jpg'},
+{src:'__CURRENT_PATH__/rlist2/1620.jpg'},
+{src:'__CURRENT_PATH__/rlist2/1650.jpg'},
+{src:'__CURRENT_PATH__/rlist2/1731.jpg'},
+{src:'__CURRENT_PATH__/rlist2/1812.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2058.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2340.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2370.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2385.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2480.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2520.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2540.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2580.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2751.jpg'},
+{src:'__CURRENT_PATH__/rlist2/2810.jpg'},
+{src:'__CURRENT_PATH__/rlist2/4603.jpg'},
+{src:'__CURRENT_PATH__/rlist2/4622.jpg'},
+{src:'__CURRENT_PATH__/rlist2/5010.jpg'},
+{src:'__CURRENT_PATH__/rlist2/5460.jpg'},
+{src:'__CURRENT_PATH__/rlist2/5534.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7000.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7002.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7006.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7025.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7034.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7040.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7059.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7186.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7205.jpg'},
+{src:'__CURRENT_PATH__/rlist2/7380.jpg'},
+{src:'__CURRENT_PATH__/rlist2/9001.jpg'},
+{src:'__CURRENT_PATH__/rlist2/9005.jpg'},
+{src:'__CURRENT_PATH__/rlist2/9041.jpg'},
+{src:'__CURRENT_PATH__/rlist2/9330.jpg'},
+{src:'__CURRENT_PATH__/rlist2/9342.jpg'},
+{src:'__CURRENT_PATH__/rlist2/9415.jpg'},
+{src:'__CURRENT_PATH__/rlist2/9611.jpg'},			]
+			//----------------------------------
+			m.load=function(){
+				for(var i=0;i<159;i++){
+					$("#img__ID").attr("src",img_array[i].src);
+					console.log(img_array[i].src)
+				}
+			}
+		}
+    </script>
+    <style>
+#DI__ID .responsive{
+	width:100%;
+	height:auto;
+}		
+#DI__ID .responsive2{
+	width:80%;
+	height:auto;
+}		
+#DI__ID .mt-95 {
+    }
+
+#DI__ID #img__ID{
+	height:70%;
+	width:70%;
+}
+#DI__ID .AffectiveSlider {
+	width: 100%;
+	text-align: center;
+}
+
+#DI__ID .arousal_svg {
+	width: 7%;
+	margin: 0px;
+	margin-bottom: -30px;
+}
+
+#DI__ID .AffectiveSlider {
+	/*margin-top: 2em;*/
+}
+
+#DI__ID .AffectiveSlider .intensity_cue_svg {
+	width: 78%;
+	position: relative;
+	top: -14px;
+}
+
+@media (max-width: 1100px) {
+	#DI__ID .AffectiveSlider .intensity_cue_svg {
+		width: 76%;
+		position: relative;
+		top: 5px;
+	}
+}
+
+#DI__ID input[type=range]:focus {
+	outline: none;
+}
+
+#DI__ID .AffectiveSlider input[type=range]{
+	/* fix for FF unable to apply focus style bug  */
+	border: 10px solid white;
+
+	/*required for proper track sizing in FF*/
+	width: 80%;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: top;
+	margin-top: 6px;
+}
+
+
+#DI__ID .AffectiveSlider input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 20px;
+	background: #ddd;
+	border-radius: 10px;
+	border: none;
+}
+#DI__ID input[type=range]:focus::-moz-range-track {
+	background: #ccc;
+}
+
+#DI__ID .AffectiveSlider input[type=range]::-moz-range-thumb {
+	height: 35px;
+	width: 35px;
+	border-radius: 60%;
+	background: white;
+	border: 2px solid #505050;
+}
+
+#DI__ID .AffectiveSlider input[type=range]::-moz-range-thumb:hover {
+	background: #505050;
+	border: 2px solid white;
+	cursor: pointer;
+	box-shadow: 0px 0px 12px #212121;
+}
+
+
+#DI__ID .AffectiveSlider input[type=range]{
+	-webkit-appearance: none;
+}
+
+
+#DI__ID input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 20px;
+	border: none;
+	background: #ddd;
+	border-radius: 10px;
+}
+
+#DI__ID input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 35px;
+	width: 35px;
+	border-radius: 60%;
+	background: white;
+	border: 2px solid #505050;
+	margin-top: -8px;
+}
+
+#DI__ID input[type=range]::-webkit-slider-thumb:hover {
+	background: #505050;
+	border: 2px solid white;
+	cursor: pointer;
+	box-shadow: 0px 0px 12px #212121;
+}
+
+
+#DI__ID input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #ccc;
+}
+
+#DI__ID input[type=range]::-ms-track {
+	width: 100%;
+	height: 20px;
+	/*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+	background: transparent;
+	/*leave room for the larger thumb to overflow with a transparent border */
+	border-color: transparent;
+	border-width: 16px 0;
+	/*remove default tick marks*/
+	color: transparent;
+}
+#DI__ID input[type=range]::-ms-fill-lower {
+	background: #ddd;
+	border-radius: 10px;
+}
+#DI__ID input[type=range]::-ms-fill-upper {
+	background: #ddd;
+	border-radius: 10px;
+}
+#DI__ID input[type=range]::-ms-thumb {
+	height: 35px;
+	width: 35px;
+	border-radius: 60%;
+	background: white;
+	border: 2px solid #505050;
+}
+#DI__ID .AffectiveSlider input[type=range]::-ms-thumb:hover {
+	background: #505050;
+	border: 2px solid white;
+	cursor: pointer;
+	box-shadow: 0px 0px 12px #212121;
+}
+#DI__ID input[type=range]:focus::-ms-fill-lower {
+	background: #ccc;
+}
+#DI__ID input[type=range]:focus::-ms-fill-upper {
+	background: #ccc;
+}
+#D__ID .btn-blank, #D__ID .btn-blank:active, #D__ID .btn-blank:visited, #D__ID .btn-blank:focus, #D__ID .btn-blank:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    font-family: 'Nunito Sans';
+    font-weight: lighter;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 18px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 5px;
+}
+
+        VmInclude:__CURRENT_PATH__/../../library/wappsystem-form.css
+
+</style>
+</div>

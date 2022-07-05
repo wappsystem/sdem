@@ -112,6 +112,7 @@
         "source-doc-ssn-form-sdem":                    {url:"$H/m/library/upload-file-form.html",Table:"source-doc-ssn-sdem",task_name:"Sleep Study - Source Documentation"},
         "geoscan-ssn-data-sdem":                    {url:"$H/m/library/upload-file-data.html",Table:"geoscan-ssn-sdem",form_module:"geoscan-ssn-form-sdem",task_name:"Sleep Study - Geoscan File upload"},
         "geoscan-ssn-form-sdem":                    {url:"$H/m/library/upload-file-form.html",Table:"geoscan-ssn-sdem",task_name:"Sleep Study - Geoscan File upload"},
+        "picture-download-sdem":                    {url:"$H/m/library/picture-download.html"},
     }
     for(p in modules){
         $vm.module_list[p]=modules[p];
