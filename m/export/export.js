@@ -25,6 +25,7 @@ $vm.module_list["__MODULE__"].show=function(){
 					href=href.replace('?\/','');
 					href=href.replace(/\//g,'_');
 					var tbname=$vm.module_list[href].Table;
+					console.log(tbname)
 					for (var i=0;i<export_list.length;i++){
 						if(export_list[i].Data.Table_name==tbname){
 							var show=export_list[i].Data.Export_Fields;
