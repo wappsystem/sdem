@@ -25,7 +25,6 @@ $vm.module_list["__MODULE__"].show=function(){
 					href=href.replace('?\/','');
 					href=href.replace(/\//g,'_');
 					var tbname=$vm.module_list[href].Table;
-					console.log(tbname)
 					for (var i=0;i<export_list.length;i++){
 						if(export_list[i].Data.Table_name==tbname){
 							var show=export_list[i].Data.Export_Fields;
@@ -457,9 +456,9 @@ var combine_output=function(output,participant){
 	var final=[];
 	//Combine all reords
 	for(var j=0;j<participant[0].length;j++){
-		var enrolled=false;
-		if(participant[0][j].Randomisation_Number!='') enrolled=true;
-		if((enrolled && enrolled_only) || (!enrolled_only) ){
+		//var enrolled=false;
+		//if(participant[0][j].Randomisation_Number!='') enrolled=true;
+		//if((enrolled && enrolled_only) || (!enrolled_only) ){
 			all=JSON.stringify(participant[0][j]);
 			for(var i=0;i<output.length;i++){
 				if(output[i][j]!=undefined ){
@@ -472,7 +471,7 @@ var combine_output=function(output,participant){
 			}
 			all=all.replace(/}{/g,',')
 			final.push(JSON.parse(all))
-		}
+		//}
 	}
 	//console.log(JSON.stringify(final));
 	$vm.download_csv(output_file_name+".csv",final);
